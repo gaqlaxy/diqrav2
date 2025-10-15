@@ -1,79 +1,162 @@
 import React, { useEffect } from "react";
-import gsap from "gsap";
+import { gsap } from "gsap";
 import "../styles/HeroSection.css";
+// import "./HeroSection.css";
 
 const HeroSection = () => {
   useEffect(() => {
-    // Slide down animation for building image (right side)
-    gsap.to(".hero-building-image", {
-      duration: 0.5,
-      y: 0,
-      opacity: 1,
-      ease: "power3.out",
-      delay: 0.3,
-    });
+    const hasSeenPreloader = sessionStorage.getItem("preloaderShown");
 
-    // Slide up animation for interior image (below button)
-    gsap.to(".hero-interior-image", {
-      duration: 0.5,
-      y: 0,
-      opacity: 1,
-      ease: "power3.out",
-      delay: 0.8,
-    });
+    if (hasSeenPreloader) {
+      // Skip preloader animation
+      const preloader = document.querySelector(".preloader");
+      if (preloader) preloader.remove();
 
-    gsap.from(".hero-excellence-label", {
-      duration: 0.5,
-      x: 50,
-      opacity: 0,
-      ease: "power3.out",
-      delay: 1,
-    });
+      gsap.set(".hero-divider", { opacity: 1 });
+      gsap.set(".hero-heading", { opacity: 1, y: 0 });
+      gsap.set(".hero-para", { opacity: 1, y: 0 });
+      gsap.set(".hero-section", { backgroundPosition: "50% 50%" });
+    } else {
+      sessionStorage.setItem("preloaderShown", "true");
+
+      const masterTimeline = gsap.timeline();
+
+      // PRELOADER ANIMATION
+      masterTimeline
+        .to(".preloader-divider", {
+          scaleX: 1,
+          duration: 0.8,
+          ease: "power2.inOut",
+          stagger: 0.2,
+        })
+        .to(
+          ".preloader-section.top",
+          {
+            x: "100%",
+            duration: 0.7,
+            ease: "power2.inOut",
+          },
+          "+=0.2"
+        )
+        .to(
+          ".preloader-section.middle",
+          {
+            x: "-100%",
+            duration: 0.7,
+            ease: "power2.inOut",
+          },
+          "-=0.6"
+        )
+        .to(
+          ".preloader-section.bottom",
+          {
+            x: "100%",
+            duration: 0.7,
+            ease: "power2.inOut",
+          },
+          "-=0.6"
+        )
+        .add(() => {
+          gsap.to(".hero-divider", { opacity: 1, duration: 0.3 });
+          const preloader = document.querySelector(".preloader");
+          if (preloader) preloader.remove();
+        });
+
+      // HERO CONTENT ANIMATION
+      masterTimeline
+        .fromTo(
+          ".hero-section",
+          { backgroundPosition: "50% 30%" },
+          {
+            backgroundPosition: "50% 50%",
+            duration: 1.5,
+            ease: "power2.out",
+          },
+          "-=0.5"
+        )
+        .to(
+          ".hero-heading",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.2,
+            ease: "power2.out",
+          },
+          "-=0.8"
+        )
+        .to(
+          ".hero-para",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.15,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        );
+    }
   }, []);
 
   return (
-    <section className="hero-section">
-      <div className="hero-container">
-        <div className="hero-content-left">
-          <h1 className="hero-title">
-            Your home, your style begin your design adventure
-          </h1>
-          <p className="hero-description">
-            A fusion of modern aesthetics and classical precision, capturing the
-            essence of architectural excellence.
-          </p>
-          <button className="hero-cta-button">
-            Our Projects
-            <svg
-              className="arrow-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </button>
-
-          <div className="hero-interior-image">
-            <img
-              src="https://images.unsplash.com/photo-1502672260066-6bc2f1a2f771?w=800"
-              alt="Modern Interior Design"
-            />
-          </div>
-        </div>
-
-        <div className="hero-content-right">
-          <div className="hero-building-image">
-            <img
-              src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1200"
-              alt="Modern Architecture Building"
-            />
-          </div>
-          <div className="hero-excellence-label">Architectural Excellence</div>
-        </div>
+    <>
+      {/* PRELOADER */}
+      <div className="preloader">
+        <div className="preloader-section top"></div>
+        <div className="preloader-section middle"></div>
+        <div className="preloader-section bottom"></div>
+        <div className="preloader-divider first"></div>
+        <div className="preloader-divider second"></div>
+        <div className="preloader-divider third"></div>
       </div>
-    </section>
+
+      {/* HERO SECTION */}
+      <section className="hero-section">
+        {/* Hero dividers */}
+        <div className="hero-divider first"></div>
+        <div className="hero-divider second"></div>
+        <div className="hero-divider third"></div>
+
+        {/* Desktop Text Blocks */}
+        <div className="text-block top-left">
+          <div className="hero-heading heading1">
+            <p>High-end</p>
+          </div>
+          <div className="hero-para para1">
+            <p>Premium Residences</p>
+          </div>
+        </div>
+
+        <div className="text-block center-right">
+          <div className="hero-para para2">
+            <p>Modern & Thoughtful Spaces</p>
+          </div>
+          <div className="hero-heading heading2">
+            <p>Design + Build</p>
+          </div>
+        </div>
+
+        <div className="text-block bottom-left">
+          <div className="hero-heading heading3">
+            <p>for elevated living</p>
+          </div>
+          <div className="hero-para para3">
+            <p>Comfort, Style, and Harmony</p>
+          </div>
+        </div>
+
+        {/* Mobile Text */}
+        <div className="hero-mobile">
+          <div className="hero-heading heading-mobile">
+            <p>High-end Design + Build</p>
+          </div>
+          <div className="hero-heading heading-mobile">
+            <p>for elevated living</p>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
