@@ -5,98 +5,83 @@ import "../styles/HeroSection.css";
 
 const HeroSection = () => {
   useEffect(() => {
-    const hasSeenPreloader = sessionStorage.getItem("preloaderShown");
+    const masterTimeline = gsap.timeline();
 
-    if (hasSeenPreloader) {
-      // Skip preloader animation
-      const preloader = document.querySelector(".preloader");
-      if (preloader) preloader.remove();
-
-      gsap.set(".hero-divider", { opacity: 1 });
-      gsap.set(".hero-heading", { opacity: 1, y: 0 });
-      gsap.set(".hero-para", { opacity: 1, y: 0 });
-      gsap.set(".hero-section", { backgroundPosition: "50% 50%" });
-    } else {
-      sessionStorage.setItem("preloaderShown", "true");
-
-      const masterTimeline = gsap.timeline();
-
-      // PRELOADER ANIMATION
-      masterTimeline
-        .to(".preloader-divider", {
-          scaleX: 1,
-          duration: 0.8,
+    // PRELOADER ANIMATION
+    masterTimeline
+      .to(".preloader-divider", {
+        scaleX: 1,
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: 0.2,
+      })
+      .to(
+        ".preloader-section.top",
+        {
+          x: "100%",
+          duration: 0.7,
           ease: "power2.inOut",
-          stagger: 0.2,
-        })
-        .to(
-          ".preloader-section.top",
-          {
-            x: "100%",
-            duration: 0.7,
-            ease: "power2.inOut",
-          },
-          "+=0.2"
-        )
-        .to(
-          ".preloader-section.middle",
-          {
-            x: "-100%",
-            duration: 0.7,
-            ease: "power2.inOut",
-          },
-          "-=0.6"
-        )
-        .to(
-          ".preloader-section.bottom",
-          {
-            x: "100%",
-            duration: 0.7,
-            ease: "power2.inOut",
-          },
-          "-=0.6"
-        )
-        .add(() => {
-          gsap.to(".hero-divider", { opacity: 1, duration: 0.3 });
-          const preloader = document.querySelector(".preloader");
-          if (preloader) preloader.remove();
-        });
+        },
+        "+=0.2"
+      )
+      .to(
+        ".preloader-section.middle",
+        {
+          x: "-100%",
+          duration: 0.7,
+          ease: "power2.inOut",
+        },
+        "-=0.6"
+      )
+      .to(
+        ".preloader-section.bottom",
+        {
+          x: "100%",
+          duration: 0.7,
+          ease: "power2.inOut",
+        },
+        "-=0.6"
+      )
+      .add(() => {
+        gsap.to(".hero-divider", { opacity: 1, duration: 0.3 });
+        const preloader = document.querySelector(".preloader");
+        if (preloader) preloader.remove();
+      });
 
-      // HERO CONTENT ANIMATION
-      masterTimeline
-        .fromTo(
-          ".hero-section",
-          { backgroundPosition: "50% 30%" },
-          {
-            backgroundPosition: "50% 50%",
-            duration: 1.5,
-            ease: "power2.out",
-          },
-          "-=0.5"
-        )
-        .to(
-          ".hero-heading",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-            stagger: 0.2,
-            ease: "power2.out",
-          },
-          "-=0.8"
-        )
-        .to(
-          ".hero-para",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: 0.15,
-            ease: "power2.out",
-          },
-          "-=0.4"
-        );
-    }
+    // HERO CONTENT ANIMATION
+    masterTimeline
+      .fromTo(
+        ".hero-section",
+        { backgroundPosition: "50% 30%" },
+        {
+          backgroundPosition: "50% 50%",
+          duration: 1.5,
+          ease: "power2.out",
+        },
+        "-=0.5"
+      )
+      .to(
+        ".hero-heading",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.2,
+          ease: "power2.out",
+        },
+        "-=0.8"
+      )
+      .to(
+        ".hero-para",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.15,
+          ease: "power2.out",
+        },
+        "-=0.4"
+      );
   }, []);
 
   return (
