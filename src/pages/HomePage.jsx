@@ -4,6 +4,7 @@ import AboutSection from "../components/About";
 import OhHerosection from "../components/OhHeroSection";
 import FeaturedWorks from "../components/FeaturedWorks";
 import ProcessSection from "../components/ProcessSection";
+import Services from "../components/Services";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       <AboutSection />
       <FeaturedWorks />
       <ProcessSection />
+      <Services />
     </>
   );
 }
