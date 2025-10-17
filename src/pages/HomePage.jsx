@@ -1,6 +1,6 @@
 import React from "react";
-// import Herosection from "../components/HeroSection";
-import AboutSection from "../components/About";
+// import Herosection from "../components/Herosection";
+// import AboutSection from "../components/About";
 import OhHerosection from "../components/OhHeroSection";
 import FeaturedWorks from "../components/FeaturedWorks";
 import ProcessSection from "../components/ProcessSection";
@@ -11,7 +11,7 @@ export default function HomePage() {
     <>
       <OhHerosection />
       {/* <Herosection /> */}
-      <AboutSection />
+      {/* <AboutSection /> */}
       <FeaturedWorks />
       <ProcessSection />
       <Services />
