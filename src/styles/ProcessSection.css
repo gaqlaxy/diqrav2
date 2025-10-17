@@ -84,14 +84,14 @@
   margin-top: 0;
 }
 
-.main-heading {
+.process-main-heading {
   font-size: 52px;
   font-weight: bold;
   line-height: 1.25;
   margin-bottom: 40px;
 }
 
-.main-heading strong {
+.process-main-heading strong {
   font-weight: 600;
 }
 
@@ -100,7 +100,7 @@
   font-weight: bold;
   line-height: 1.25;
 
-  color: #2a2a2a;
+  color: #080807;
 }
 
 .cta-btn-styled {
@@ -200,11 +200,27 @@
     padding: 30px 20px 50px 20px;
   }
 
-  .main-heading {
+  .process-main-heading {
     margin-bottom: 30px;
     font-size: clamp(2rem, 1.858rem + 0.71vw, 2.713rem);
   }
   .description {
     font-size: clamp(2rem, 1.858rem + 0.71vw, 2.713rem);
+  }
+  .process-header {
+    font-size: clamp(0.875rem, 0.8rem + 0vw, 0.875rem);
+    font-weight: 800;
+    color: #080807;
+  }
+  .process-item {
+    display: flex;
+    gap: 0.5rem;
+    color: #080807;
+    font-size: clamp(1rem, 0.986rem + 0.07vw, 1.071rem);
+    letter-spacing: 0.1em;
+    align-items: center;
+  }
+  .process-number {
+    font-size: clamp(1rem, 0.986rem + 0.07vw, 1.071rem);
   }
 }

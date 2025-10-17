@@ -84,11 +84,6 @@ const Services = () => {
           <div className="label">WHAT WE DO</div>
           <h1>Our Services</h1>
         </div>
-        <div className="header-right">
-          <a href="services.html" className="cta-btn-styled">
-            <span>View all</span>
-          </a>
-        </div>
       </div>
 
       <div className="services-grid">
@@ -181,6 +176,12 @@ const Services = () => {
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="header-right">
+        <a href="services.html" className="cta-btn-styled">
+          <span>View all</span>
+        </a>
       </div>
 
       <div className="inquiry">

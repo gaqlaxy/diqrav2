@@ -100,7 +100,7 @@ const ProcessSection = () => {
 
       <div className="right-column">
         <div className="content-section">
-          <h1 className="main-heading">
+          <h1 className="process-main-heading">
             Our approach at Diqra Architects is designed to make your journey
             from concept to completion as smooth and enjoyable as possible.
           </h1>
