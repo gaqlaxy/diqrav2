@@ -1,5 +1,6 @@
-.container {
-  max-width: 1400px;
+.services-section {
+  padding: 80px 40px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -65,7 +66,8 @@ h1 {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 450px);
+  /* grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); */
   gap: 24px;
 }
 

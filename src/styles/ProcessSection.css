@@ -1,6 +1,6 @@
 .process-section {
   height: 100vh;
-  padding: 40px 40px;
+  padding: 0px 40px;
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 80px;
@@ -19,7 +19,7 @@
   opacity: 0.5;
 }
 
-.image-container {
+.process-image-container {
   position: relative;
   width: 100%;
   height: 28vh;
@@ -29,14 +29,14 @@
   margin-bottom: 12px;
 }
 
-.image-container img {
+.process-image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.image-container:hover img {
+.process-image-container:hover img {
   transform: scale(1.05);
 }
 
@@ -74,13 +74,13 @@
   cursor: default;
 }
 
-.left-column {
+.process-left-column {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.content-section {
+.process-content-section {
   margin-top: 0;
 }
 
@@ -95,7 +95,7 @@
   font-weight: 600;
 }
 
-.description {
+.process-description {
   font-size: 52px;
   font-weight: bold;
   line-height: 1.25;
@@ -103,7 +103,7 @@
   color: #080807;
 }
 
-.cta-btn-styled {
+.process-cta-btn-styled {
   margin: 40px 0 20px 0;
   display: inline-flex;
   align-items: center;
@@ -124,13 +124,13 @@
   position: relative;
 }
 
-.cta-btn-styled span {
+.process-cta-btn-styled span {
   color: #fff;
   display: block;
   position: relative;
 }
 
-.cta-btn-styled::after {
+.process-cta-btn-styled::after {
   content: "";
   width: 8px;
   height: 8px;
@@ -142,7 +142,7 @@
   box-sizing: border-box;
 }
 
-.cta-btn-styled:hover::after {
+.process-cta-btn-styled:hover::after {
   background: #fff;
   border-color: #fff;
 }
@@ -164,12 +164,12 @@
     gap: 0;
   }
 
-  .left-column {
+  .process-left-column {
     overflow-y: auto;
     padding: 30px 24px;
   }
 
-  .image-container {
+  .process-image-container {
     height: 50vh;
     margin: 0 0 12px 0;
   }
@@ -178,25 +178,25 @@
     font-size: 15px;
   }
 
-  .right-column {
+  .process-right-column {
     padding: 40px 24px 60px 24px;
   }
 
-  .description {
+  .process-description {
     font-size: 20px;
   }
 }
 
 @media (max-width: 768px) {
-  .left-column {
+  .process-left-column {
     padding: 24px 20px;
   }
 
-  .image-container {
+  .process-image-container {
     height: 45vh;
   }
 
-  .right-column {
+  .process-right-column {
     padding: 30px 20px 50px 20px;
   }
 
@@ -204,7 +204,7 @@
     margin-bottom: 30px;
     font-size: clamp(2rem, 1.858rem + 0.71vw, 2.713rem);
   }
-  .description {
+  .process-description {
     font-size: clamp(2rem, 1.858rem + 0.71vw, 2.713rem);
   }
   .process-header {

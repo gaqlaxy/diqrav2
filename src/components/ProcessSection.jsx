@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 
 const ProcessSection = () => {
   useEffect(() => {
-    const styledCtaBtns = document.querySelectorAll(".cta-btn-styled");
+    const styledCtaBtns = document.querySelectorAll(".process-cta-btn-styled");
 
     styledCtaBtns.forEach((btn) => {
       const createSlideUpEffect = (element) => {
@@ -76,10 +76,10 @@ const ProcessSection = () => {
 
   return (
     <div className="process-section">
-      <div className="left-column">
+      <div className="process-left-column">
         <div className="process-header">(OUR PROCESS)</div>
 
-        <div className="image-container">
+        <div className="process-image-container">
           <img
             src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=1200&fit=crop"
             alt="Modern Architecture"
@@ -98,20 +98,20 @@ const ProcessSection = () => {
         </div>
       </div>
 
-      <div className="right-column">
-        <div className="content-section">
+      <div className="process-right-column">
+        <div className="process-content-section">
           <h1 className="process-main-heading">
             Our approach at Diqra Architects is designed to make your journey
             from concept to completion as smooth and enjoyable as possible.
           </h1>
 
-          <p className="description">
+          <p className="process-description">
             <strong>With</strong> our 6-stage process, we prioritise clarity,
             collaboration, and your unique vision. At every step, we'll keep you
             informed, inspired, and involved.
           </p>
 
-          <a href="#" className="cta-btn-styled">
+          <a href="#" className="process-cta-btn-styled">
             <span>get to know our process</span>
           </a>
         </div>

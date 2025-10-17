@@ -5,6 +5,7 @@ import OhHerosection from "../components/OhHeroSection";
 import FeaturedWorks from "../components/FeaturedWorks";
 import ProcessSection from "../components/ProcessSection";
 import Services from "../components/Services";
+import Testimonials from "../components/Testimonials";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <FeaturedWorks />
       <ProcessSection />
       <Services />
+      <Testimonials />
     </>
   );
 }
