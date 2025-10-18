@@ -1,34 +1,26 @@
-/* ============ CTA SECTION ============ */
+/* CTA SECTION GRID */
 .cta-section {
-  min-height: 100vh;
-  padding: 40px 20px;
   display: grid;
   align-items: center;
-  justify-content: center;
-  grid-template-columns: repeat(4, 1fr);
+  justify-content: flex-start; /* changed from center */
+  grid-template-columns: 1fr; /* simplified for full width */
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 40px;
 }
 
-.cta-heading {
-  font-size: clamp(5.5rem, 5vw, 8.5rem);
-  font-weight: 500;
+.cta-heading,
+.cta-heading2 {
+  font-size: 120px; /* your required size */
+  font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.03em;
   color: #000;
-  grid-column: span 3 / span 3;
+  white-space: nowrap; /* 🔥 prevents awkward line breaks */
 }
 
-.cta-heading2 {
-  font-size: clamp(5.5rem, 5vw, 9.5rem);
-  font-weight: 500;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  grid-column: span 3 / span 3;
-  grid-row: span 2 / span 2;
-  grid-column-start: 2;
-  grid-row-start: 2;
-}
-
-/* ============ BUTTON STYLING ============ */
+/* BUTTON */
 .cta-btn-styled {
   margin: 40px 0 20px 0;
   display: inline-flex;
@@ -36,6 +28,7 @@
   text-transform: uppercase;
   padding: 10px 18px;
   background: #080807;
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50px;
   color: white;
@@ -47,6 +40,7 @@
   white-space: nowrap;
   cursor: pointer;
   position: relative;
+  width: auto;
 }
 
 .cta-btn-styled span {
@@ -85,21 +79,19 @@
   justify-content: center;
 }
 
-/* ============ HOVER TEXT EFFECT ============ */
-.text-original,
-.text-hover {
-  display: block;
-  position: relative;
-  transition: transform 0.3s ease;
-}
-
-/* ============ RESPONSIVE ============ */
+/* Mobile Responsive */
 @media (max-width: 768px) {
-  .cta-heading,
+  .cta-heading {
+    font-size: clamp(2.5rem, 1.813rem + 5.84vw, 9.229rem);
+    font-weight: bold;
+    line-height: 1.1;
+  }
+
   .cta-heading2 {
     font-size: clamp(2.5rem, 1.813rem + 5.84vw, 9.229rem);
     font-weight: bold;
     line-height: 1.1;
+    margin-bottom: 40px;
   }
 
   .cta-section {
