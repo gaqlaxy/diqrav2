@@ -1,26 +1,42 @@
-/* CTA SECTION GRID */
 .cta-section {
   display: grid;
   align-items: center;
-  justify-content: flex-start; /* changed from center */
-  grid-template-columns: 1fr; /* simplified for full width */
-  max-width: 1600px;
+  justify-content: center;
+  grid-template-columns: repeat(6, 1fr);
+  max-width: 1400px;
   margin: 0 auto;
-  width: 100%;
-  padding: 0 40px;
 }
 
-.cta-heading,
-.cta-heading2 {
-  font-size: 120px; /* your required size */
+.cta-heading {
+  font-size: 120px;
   font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.03em;
   color: #000;
-  white-space: nowrap; /* 🔥 prevents awkward line breaks */
+  grid-column: span 4 / span 4;
+  white-space: nowrap;
 }
 
-/* BUTTON */
+.mobile-text {
+  display: none;
+}
+
+.desktop-text {
+  display: block;
+}
+
+.cta-heading2 {
+  font-size: 120px;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  grid-column: span 4 / span 4;
+  grid-row: span 2 / span 2;
+  grid-column-start: 2;
+  grid-row-start: 2;
+  white-space: nowrap;
+}
+
 .cta-btn-styled {
   margin: 40px 0 20px 0;
   display: inline-flex;
@@ -40,7 +56,6 @@
   white-space: nowrap;
   cursor: pointer;
   position: relative;
-  width: auto;
 }
 
 .cta-btn-styled span {
@@ -77,21 +92,51 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 6rem 0 3rem 0;
 }
 
-/* Mobile Responsive */
+/* Mobile responsive */
 @media (max-width: 768px) {
+  .desktop-text {
+    display: none;
+  }
+
+  .mobile-text {
+    display: block;
+  }
+
   .cta-heading {
-    font-size: clamp(2.5rem, 1.813rem + 5.84vw, 9.229rem);
-    font-weight: bold;
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 700;
     line-height: 1.1;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .cta-heading h1 {
+    margin-bottom: 0px;
+  }
+
+  .cta-heading span {
+    margin-bottom: 0px;
+  }
+
+  body {
+    padding: 30px 15px;
+  }
+
+  .cta-btn-styled {
+    font-size: 16px;
+    padding: 12px 20px;
   }
 
   .cta-heading2 {
-    font-size: clamp(2.5rem, 1.813rem + 5.84vw, 9.229rem);
-    font-weight: bold;
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 700;
     line-height: 1.1;
     margin-bottom: 40px;
+    white-space: normal;
+    text-align: left;
   }
 
   .cta-section {
@@ -101,14 +146,5 @@
   .cta-heading2 {
     grid-column-start: 1;
     grid-row-start: 2;
-  }
-
-  .cta-btn-styled {
-    font-size: 16px;
-    padding: 12px 20px;
-  }
-
-  body {
-    padding: 30px 15px;
   }
 }

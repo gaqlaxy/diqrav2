@@ -7,6 +7,7 @@ import ProcessSection from "../components/ProcessSection";
 import Services from "../components/Services";
 import Testimonials from "../components/Testimonials";
 import CtaSection from "../components/CtaSection";
+import Footer from "../components/Footer";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
       <Services />
       <Testimonials />
       <CtaSection />
+      <Footer />
     </>
   );
 }

@@ -134,6 +134,12 @@ h2 {
   color: #666;
 }
 
+@media (max-width: 768px) {
+  .testimonials-testimonials-section {
+    padding: 40px 20px;
+  }
+}
+
 @media (max-width: 968px) {
   .testimonials-testimonial-card {
     flex-direction: column;

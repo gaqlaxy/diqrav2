@@ -79,6 +79,8 @@ body {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
     url("https://website-data-pluckwalk.s3-ap-south-1.amazonaws.com/test/38h6fE1nuT49Zt2Za3kKhw.jpeg");
   background-size: cover;
+  background-color: #111; /* Slightly softer fallback */
+  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   will-change: transform;
@@ -87,6 +89,7 @@ body {
 }
 .oh-hero-bg.loaded {
   opacity: 1;
+  visibility: visible;
 }
 
 .oh-hero-overlay {
