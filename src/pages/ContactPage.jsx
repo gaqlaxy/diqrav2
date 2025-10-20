@@ -171,7 +171,7 @@ margin-bottom: 40px;}
 
         .contact-section {
           display: grid;
-          grid-template-columns: 380px 1fr;
+          grid-template-columns: 500px 1fr;
           gap: 80px;
           margin-bottom: 100px;
         }
