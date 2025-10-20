@@ -100,15 +100,15 @@ const ProcessSection = () => {
 
       <div className="process-right-column">
         <div className="process-content-section">
-          <h1 className="process-main-heading">
+          <p className="process-main-heading">
             Our approach at Diqra Architects is designed to make your journey
             from concept to completion as smooth and enjoyable as possible.
-          </h1>
+          </p>
 
           <p className="process-description">
-            <strong>With</strong> our 6-stage process, we prioritise clarity,
-            collaboration, and your unique vision. At every step, we'll keep you
-            informed, inspired, and involved.
+            With our 6-stage process, we prioritise clarity, collaboration, and
+            your unique vision. At every step, we'll keep you informed,
+            inspired, and involved.
           </p>
 
           <a href="#" className="process-cta-btn-styled">

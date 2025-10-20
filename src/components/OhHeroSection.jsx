@@ -243,18 +243,18 @@ export default function OhHeroSection() {
           >
             <img
               ref={previewImageRef}
-              src="Overlay1.jpeg"
+              src="/src/assets/Hero1.jpeg"
               alt="Architecture project interior preview"
               className="oh-preview-image"
             />
-            <div className="oh-preview-overlay-text">
+            {/* <div className="oh-preview-overlay-text">
               <h3 ref={previewTitleRef} className="oh-preview-title">
                 Myrtle Pool House
               </h3>
               <p ref={previewSubtitleRef} className="oh-preview-subtitle">
                 Explore the Project
               </p>
-            </div>
+            </div> */}
           </div>
 
           {/* Top Bar */}

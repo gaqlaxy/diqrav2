@@ -9,7 +9,7 @@
 
 .cta-heading {
   font-size: 120px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.03em;
   color: #000;
@@ -27,7 +27,7 @@
 
 .cta-heading2 {
   font-size: 120px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.03em;
   grid-column: span 4 / span 4;
@@ -119,10 +119,6 @@
 
   .cta-heading span {
     margin-bottom: 0px;
-  }
-
-  body {
-    padding: 30px 15px;
   }
 
   .cta-btn-styled {
