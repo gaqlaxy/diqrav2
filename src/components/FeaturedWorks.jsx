@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 import "../styles/FeaturedWorks.css";
 
 const FeaturedWorks = () => {
@@ -140,9 +141,13 @@ const FeaturedWorks = () => {
       </div>
 
       <div className="cta-btn-container">
-        <a href="#" className="cta-btn-styled">
+        {/* <a href="#" className="cta-btn-styled">
           <span>View all works</span>
-        </a>
+        </a> */}
+
+        <Link to="/works" className="cta-btn-styled">
+          <span>View all works</span>
+        </Link>
       </div>
     </section>
   );

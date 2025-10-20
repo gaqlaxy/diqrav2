@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 import "../styles/OhHeroSection.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -362,7 +363,7 @@ export default function OhHeroSection() {
               second. We take the time to understand how you live, work, and
               move through your space.
             </p>
-            <a
+            {/* <a
               href="#"
               className="about-cta-btn-styled"
               ref={ctaBtnRef}
@@ -370,7 +371,16 @@ export default function OhHeroSection() {
               onMouseLeave={handleCtaMouseLeave}
             >
               <span>Learn more About us</span>
-            </a>
+            </a> */}
+            <Link
+              to="/about"
+              className="about-cta-btn-styled"
+              ref={ctaBtnRef}
+              onMouseEnter={handleCtaMouseEnter}
+              onMouseLeave={handleCtaMouseLeave}
+            >
+              <span>Learn more About us</span>
+            </Link>
           </div>
         </section>
       </main>
