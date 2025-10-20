@@ -275,7 +275,7 @@
   }
 
   .team-section {
-    padding: 2rem 1rem;
+    padding: 4rem 2rem;
   }
 
   .team-content {
@@ -285,11 +285,6 @@
 
   .team-members {
     gap: 0;
-  }
-
-  .team-title {
-    font-size: clamp(2.5rem, 1.813rem + 5.84vw, 9.229rem);
-    font-weight: 700;
   }
 
   .team-member {
