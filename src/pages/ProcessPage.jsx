@@ -85,6 +85,18 @@
 
 //   return (
 //     <div style={{ background: "#111", minHeight: "100vh" }}>
+//       {/* Dummy Section Before */}
+//       <section className="dummy-section before">
+//         <div className="dummy-content">
+//           <h1>Welcome Section</h1>
+//           <p>
+//             This is a dummy section before the scroll cards. You can modify this
+//             content however you like.
+//           </p>
+//           <p>Add your hero content, intro text, or any other elements here.</p>
+//         </div>
+//       </section>
+
 //       <section className="content">
 //         <div className="content-inner">
 //           {cardData.map((card, index) => (
@@ -114,6 +126,18 @@
 //         </div>
 //       </section>
 //       <div className="spacer"></div>
+
+//       {/* Dummy Section After */}
+//       <section className="dummy-section after">
+//         <div className="dummy-content">
+//           <h1>Closing Section</h1>
+//           <p>
+//             This is a dummy section after the scroll cards. Perfect for CTAs,
+//             contact forms, or footer content.
+//           </p>
+//           <p>Customize this area to fit your needs.</p>
+//         </div>
+//       </section>
 
 //       <style>{`
 //         * {
@@ -206,6 +230,42 @@
 //         .spacer {
 //           height: 100vh;
 //         }
+
+//         /* Dummy Sections Styling */
+//         .dummy-section {
+//           min-height: 100vh;
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+//           padding: 4rem 2rem;
+//         }
+
+//         .dummy-section.before {
+//           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+//         }
+
+//         .dummy-section.after {
+//           background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+//         }
+
+//         .dummy-content {
+//           max-width: 800px;
+//           text-align: center;
+//           color: white;
+//         }
+
+//         .dummy-content h1 {
+//           font-size: clamp(2rem, 5vw, 4rem);
+//           margin-bottom: 1.5rem;
+//           font-weight: 700;
+//         }
+
+//         .dummy-content p {
+//           font-size: clamp(1rem, 2vw, 1.25rem);
+//           line-height: 1.6;
+//           margin-bottom: 1rem;
+//           opacity: 0.9;
+//         }
 //       `}</style>
 //     </div>
 //   );
@@ -214,6 +274,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "../styles/ProcessPage.css";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -245,7 +306,7 @@ const cardData = [
   },
 ];
 
-export default function ScrollCards() {
+export default function ProcessPage() {
   const wrapperRefs = useRef([]);
   const slideRefs = useRef([]);
 
@@ -297,10 +358,10 @@ export default function ScrollCards() {
   }, []);
 
   return (
-    <div style={{ background: "#111", minHeight: "100vh" }}>
+    <div className="process-page">
       {/* Dummy Section Before */}
-      <section className="dummy-section before">
-        <div className="dummy-content">
+      <section className="process-page-dummy-section process-page-before">
+        <div className="process-page-dummy-content">
           <h1>Welcome Section</h1>
           <p>
             This is a dummy section before the scroll cards. You can modify this
@@ -310,27 +371,29 @@ export default function ScrollCards() {
         </div>
       </section>
 
-      <section className="content">
-        <div className="content-inner">
+      <section className="process-page-content">
+        <div className="process-page-content-inner">
           {cardData.map((card, index) => (
             <div
               key={index}
-              className="content-wrapper"
+              className="process-page-content-wrapper"
               ref={(el) => (wrapperRefs.current[index] = el)}
             >
               <div
-                className={`content-slide ${card.color}`}
+                className={`process-page-content-slide process-page-${card.color}`}
                 ref={(el) => (slideRefs.current[index] = el)}
               >
-                <div className="content-slide-inner">
+                <div className="process-page-content-slide-inner">
                   <div>
-                    <p className="content-number">
+                    <p className="process-page-content-number">
                       {"{ " + card.number + " }"}
                     </p>
-                    <h2 className="content-title heading-lg">{card.title}</h2>
+                    <h2 className="process-page-content-title process-page-heading-lg">
+                      {card.title}
+                    </h2>
                   </div>
                   <div>
-                    <p className="content-copy">{card.copy}</p>
+                    <p className="process-page-content-copy">{card.copy}</p>
                   </div>
                 </div>
               </div>
@@ -338,11 +401,11 @@ export default function ScrollCards() {
           ))}
         </div>
       </section>
-      <div className="spacer"></div>
+      <div className="process-page-spacer"></div>
 
       {/* Dummy Section After */}
-      <section className="dummy-section after">
-        <div className="dummy-content">
+      <section className="process-page-dummy-section process-page-after">
+        <div className="process-page-dummy-content">
           <h1>Closing Section</h1>
           <p>
             This is a dummy section after the scroll cards. Perfect for CTAs,
@@ -351,135 +414,6 @@ export default function ScrollCards() {
           <p>Customize this area to fit your needs.</p>
         </div>
       </section>
-
-      <style>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-
-        body {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-          color: #333;
-        }
-
-        .content-wrapper {
-          perspective: 800px;
-        }
-
-        .content-slide {
-          color: #111;
-          padding: 3rem 1rem 6rem 1rem;
-        }
-
-        .content-slide-inner {
-          position: relative;
-          max-width: 1200px;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          height: 100%;
-          gap: 2rem;
-        }
-
-        .content-slide.green {
-          background: #c9f6b4;
-        }
-
-        .content-slide.white {
-          background: #f5f5f5;
-        }
-
-        .content-slide.orange {
-          background: #ffd9b0;
-        }
-
-        .content-slide.lilac {
-          background: #c4bafe;
-        }
-
-        .content-title {
-          color: #111;
-          margin-top: 0.5rem;
-        }
-
-        .content-copy {
-          max-width: 50ch;
-          font-size: clamp(1rem, 2vw, 1.5rem);
-          line-height: 1.6;
-        }
-
-        .content-number {
-          font-size: clamp(1rem, 3vw, 3rem);
-          opacity: 0.5;
-          font-weight: 500;
-        }
-
-        .heading-lg {
-          font-size: 8vw;
-          font-weight: 700;
-          line-height: 1.1;
-        }
-
-        @media (min-width: 900px) {
-          .content-slide {
-            height: calc(100vh - 80px);
-            transform-style: preserve-3d;
-          }
-
-          .content-slide-inner {
-            gap: 4rem;
-          }
-        }
-
-        @media (min-width: 1200px) {
-          .heading-lg {
-            font-size: clamp(4rem, 8vw, 8rem);
-          }
-        }
-
-        .spacer {
-          height: 100vh;
-        }
-
-        /* Dummy Sections Styling */
-        .dummy-section {
-          min-height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 4rem 2rem;
-        }
-
-        .dummy-section.before {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .dummy-section.after {
-          background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .dummy-content {
-          max-width: 800px;
-          text-align: center;
-          color: white;
-        }
-
-        .dummy-content h1 {
-          font-size: clamp(2rem, 5vw, 4rem);
-          margin-bottom: 1.5rem;
-          font-weight: 700;
-        }
-
-        .dummy-content p {
-          font-size: clamp(1rem, 2vw, 1.25rem);
-          line-height: 1.6;
-          margin-bottom: 1rem;
-          opacity: 0.9;
-        }
-      `}</style>
     </div>
   );
 }
