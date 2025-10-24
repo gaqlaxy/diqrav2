@@ -1,0 +1,310 @@
+/* Main Navigation */
+.Navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.Navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.Navbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.Navbar-logo {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: -0.025em;
+  color: #000;
+  text-decoration: none;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+
+.Navbar-logo-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Desktop Nav Links */
+.Navbar-links {
+  display: none;
+  align-items: center;
+  gap: 32px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.Navbar-links-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.Navbar-link {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  pointer-events: auto;
+}
+
+.Navbar-link:hover {
+  opacity: 0.6;
+}
+
+/* Right Side Actions */
+.Navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  pointer-events: auto;
+}
+
+.Navbar-contact-btn {
+  background-color: #000;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.Navbar-contact-btn:hover {
+  background-color: #333;
+}
+
+.Navbar-contact-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: white;
+  flex-shrink: 0;
+}
+
+.Navbar-menu-btn {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  transition: opacity 0.2s ease;
+  display: block;
+}
+
+.Navbar-menu-btn:hover {
+  opacity: 0.6;
+}
+
+/* Full Screen Overlay Menu */
+.Navbar-overlay-menu {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 50;
+  display: none;
+  clip-path: inset(0% 0% 100% 0%);
+  will-change: clip-path;
+}
+
+.Navbar-overlay-menu-open {
+  display: block;
+}
+
+.Navbar-overlay-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Navbar-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.Navbar-overlay-logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+}
+
+.Navbar-close-btn {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.Navbar-close-btn:hover {
+  opacity: 0.6;
+}
+
+.Navbar-overlay-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+
+.Navbar-overlay-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Navbar-overlay-nav-item {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  display: block;
+}
+
+.Navbar-overlay-nav-item:hover {
+  opacity: 0.6;
+}
+
+.Navbar-overlay-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: white;
+}
+
+.Navbar-overlay-footer-link {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.Navbar-overlay-footer-link:hover {
+  opacity: 0.6;
+}
+
+/* GSAP Animation Classes */
+.text-original,
+.text-hover {
+  display: block;
+  will-change: transform, opacity;
+}
+
+.text-hover {
+  opacity: 0;
+}
+
+/* Performance optimizations */
+.Navbar-link,
+.Navbar-contact-btn,
+.Navbar-menu-btn,
+.Navbar-overlay-nav-item,
+.Navbar-overlay-footer-link {
+  will-change: auto;
+}
+
+.Navbar-link:hover,
+.Navbar-contact-btn:hover,
+.Navbar-menu-btn:hover,
+.Navbar-overlay-nav-item:hover,
+.Navbar-overlay-footer-link:hover {
+  will-change: transform, opacity;
+}
+
+/* Tablet and Desktop */
+@media (min-width: 1024px) {
+  .Navbar-content {
+    height: 80px;
+  }
+
+  .Navbar-container,
+  .Navbar-overlay-container {
+    padding: 0 48px;
+  }
+
+  .Navbar-logo,
+  .Navbar-overlay-logo {
+    font-size: 24px;
+  }
+
+  .Navbar-links {
+    display: flex;
+  }
+
+  /* Hide menu button on desktop unless scrolled */
+  .Navbar-menu-btn {
+    display: none;
+  }
+
+  .Navbar-menu-btn-visible {
+    display: block;
+  }
+
+  .Navbar-overlay-header {
+    height: 80px;
+  }
+
+  .Navbar-overlay-content {
+    padding: 40px 0;
+  }
+
+  .Navbar-overlay-nav {
+    gap: 12px;
+  }
+
+  .Navbar-overlay-nav-item {
+    font-size: 48px;
+  }
+
+  .Navbar-overlay-footer {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1280px) {
+  .Navbar-overlay-nav-item {
+    font-size: 56px;
+  }
+}

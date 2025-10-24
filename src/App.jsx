@@ -7,11 +7,13 @@ import ContactPage from "./pages/ContactPage";
 import ProcessPage from "./pages/ProcessPage";
 import InfiniteGallery from "./pages/InfiniteGallery";
 import ProjectDetail from "./pages/ProjectDetail";
+import Navbar from "./components/Navbar";
 
 export default function App() {
   return (
     <>
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
