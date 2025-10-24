@@ -6,14 +6,13 @@ import "../styles/Navbar.css";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const overlayRef = useRef(null); // reference to overlay for sequencing
+  const overlayRef = useRef(null);
 
   useEffect(() => {
-    // Opening/closing overlay clip-path animation (your existing sequence)
+    // Opening/closing overlay clip-path animation
     const overlay = document.querySelector(".Navbar-overlay-menu");
 
     if (isMenuOpen) {
-      // ensure overlay is present for measurement before we animate contents
       gsap.set(overlay, { display: "block" });
       gsap.fromTo(
         overlay,
@@ -21,10 +20,8 @@ const Navbar = () => {
         { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power3.inOut" }
       );
 
-      // after overlay becomes visible, animate children (and ensure measurements are correct)
-      // Use requestAnimationFrame to guarantee layout updated
+      // Animate children after overlay is visible
       requestAnimationFrame(() => {
-        // small delay ensures computed styles / layout stable
         requestAnimationFrame(() => {
           gsap.fromTo(
             ".Navbar-overlay-nav-item",
@@ -70,7 +67,6 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 600);
 
-    // throttle with requestAnimationFrame
     let ticking = false;
     const onScroll = () => {
       if (!ticking) {
@@ -86,7 +82,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // createSlideUpEffect returns a paused timeline for hover
   const createSlideUpEffect = (element) => {
     if (!element) return null;
     let span = element.querySelector("span");
@@ -97,16 +92,16 @@ const Navbar = () => {
       span = element.querySelector("span");
     }
 
-    if (span.querySelector(".text-original")) return null;
+    if (span.querySelector(".navbar-text-original")) return null;
 
     const originalText = span.textContent;
     span.innerHTML = `
-    <span class="text-original">${originalText}</span>
-    <span class="text-hover">${originalText}</span>
+    <span class="navbar-text-original">${originalText}</span>
+    <span class="navbar-text-hover">${originalText}</span>
   `;
 
-    const originalSpan = span.querySelector(".text-original");
-    const hoverSpan = span.querySelector(".text-hover");
+    const originalSpan = span.querySelector(".navbar-text-original");
+    const hoverSpan = span.querySelector(".navbar-text-hover");
     const slideDistance = originalSpan.offsetHeight || 32;
 
     gsap.set(span, {
@@ -153,9 +148,7 @@ const Navbar = () => {
     return tl;
   };
 
-  // Initialize hover timelines in two phases:
-  // 1) Immediately for always-visible elements (desktop nav & header buttons)
-  // 2) When overlay is opened (so overlay items can be measured while visible)
+  // Initialize hover for always-visible elements
   useEffect(() => {
     const selectors = [
       ".Navbar-link-animated",
@@ -179,7 +172,6 @@ const Navbar = () => {
     const elements = document.querySelectorAll(selectors.join(", "));
     const cleanups = [];
 
-    // Wait for DOM layout to stabilize before measuring text height
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         elements.forEach((el) => {
@@ -189,27 +181,23 @@ const Navbar = () => {
       });
     });
 
-    // Cleanup
     return () => {
       cleanups.forEach((fn) => fn());
     };
   }, []);
 
-  // When overlay opens, initialize overlay-specific hover animations AFTER overlay is visible
+  // Initialize hover for overlay items when menu opens
   useEffect(() => {
     if (!isMenuOpen) return;
 
-    // Wait a frame so overlay is rendered/display:block and measurements are correct
     let cancel = false;
     requestAnimationFrame(() => {
       if (cancel) return;
-      // small secondary frame to be extra-safe on slower devices
       requestAnimationFrame(() => {
         const overlayItems = document.querySelectorAll(
-          ".Navbar-overlay-nav-item, .Navbar-overlay-footer-link"
+          ".Navbar-overlay-nav-item, .Navbar-overlay-footer-link, .Navbar-close-btn"
         );
         overlayItems.forEach((el) => {
-          // skip if already initialized
           if (el._hoverInitialized) return;
           const tl = createSlideUpEffect(el);
           if (!tl) return;
@@ -230,9 +218,8 @@ const Navbar = () => {
 
     return () => {
       cancel = true;
-      // cleanup overlay hover listeners
       const overlayItems = document.querySelectorAll(
-        ".Navbar-overlay-nav-item, .Navbar-overlay-footer-link"
+        ".Navbar-overlay-nav-item, .Navbar-overlay-footer-link, .Navbar-close-btn"
       );
       overlayItems.forEach((el) => {
         if (el._hoverCleanup) el._hoverCleanup();
@@ -253,7 +240,7 @@ const Navbar = () => {
                 isScrolled ? "Navbar-logo-hidden" : ""
               }`}
             >
-              Diqra Architects
+              OH Architecture
             </Link>
 
             <div
@@ -273,9 +260,13 @@ const Navbar = () => {
             </div>
 
             <div className="Navbar-actions">
-              <button className="Navbar-contact-btn">
+              <button
+                className={`Navbar-contact-btn ${
+                  isScrolled ? "Navbar-contact-btn-visible" : ""
+                }`}
+              >
                 <span>GET IN TOUCH</span>
-                <span className="Navbar-contact-dot" aria-hidden />
+                <span className="Navbar-contact-dot" aria-hidden="true" />
               </button>
 
               <button

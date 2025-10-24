@@ -86,12 +86,20 @@
   font-weight: 500;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: flex;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  display: none; /* Hidden by default on mobile */
   align-items: center;
   gap: 8px;
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.Navbar-contact-btn-visible {
+  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .Navbar-contact-btn:hover {
@@ -108,8 +116,12 @@
   transition: transform 0.3s ease;
 }
 
+.Navbar-contact-btn:hover .Navbar-contact-dot {
+  transform: scale(1.6);
+}
+
 .Navbar-menu-btn {
-  background-color: #333; /* gray version */
+  background-color: #333;
   color: white;
   padding: 10px 24px;
   border-radius: 50px;
@@ -139,12 +151,12 @@
   display: none;
   clip-path: inset(0% 0% 100% 0%);
   will-change: clip-path;
-  pointer-events: none; /* 🔹 disable interaction by default */
+  pointer-events: none;
 }
 
 .Navbar-overlay-menu-open {
   display: block;
-  pointer-events: auto; /* 🔹 re-enable when open */
+  pointer-events: auto;
 }
 
 .Navbar-overlay-container {
@@ -234,24 +246,14 @@
   opacity: 0.6;
 }
 
-.Navbar-contact-btn:hover .Navbar-contact-dot {
-  transform: scale(1.6); /* expands forward instead of shrinking */
-}
-
-/* Optional smoother hover transitions */
-.Navbar-contact-btn:hover,
-.Navbar-menu-btn:hover {
-  background-color: #444;
-}
-
 /* GSAP Animation Classes */
-.text-original,
-.text-hover {
+.navbar-text-original,
+.navbar-text-hover {
   display: block;
   will-change: transform, opacity;
 }
 
-.text-hover {
+.navbar-text-hover {
   opacity: 0;
 }
 
@@ -290,6 +292,13 @@
 
   .Navbar-links {
     display: flex;
+  }
+
+  /* Contact button always visible on desktop */
+  .Navbar-contact-btn {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   /* Hide menu button on desktop unless scrolled */
