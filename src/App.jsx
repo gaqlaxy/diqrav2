@@ -6,6 +6,7 @@ import HorizontalGallery from "./pages/Works";
 import ContactPage from "./pages/ContactPage";
 import ProcessPage from "./pages/ProcessPage";
 import InfiniteGallery from "./pages/InfiniteGallery";
+import ProjectDetail from "./pages/ProjectDetail";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/gallery" element={<InfiniteGallery />} />
+          <Route path="/project/:slug" element={<ProjectDetail />} />
         </Routes>
       </Router>
     </>
