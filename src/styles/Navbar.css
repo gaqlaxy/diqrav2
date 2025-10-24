@@ -10,9 +10,8 @@
 }
 
 .Navbar-container {
-  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 18px;
 }
 
 .Navbar-content {
@@ -50,8 +49,8 @@
 }
 
 .Navbar-link {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: clamp(1rem, 0.986rem + 0.07vw, 1.071rem);
+  font-weight: 600;
   letter-spacing: 0.05em;
   color: #ffffff; /* White color for nav links */
   text-decoration: none;
@@ -72,12 +71,12 @@
 }
 
 .Navbar-contact-btn {
-  background-color: #000;
+  background-color: #080807;
   color: white;
   padding: 10px 24px;
   border-radius: 50px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: clamp(1rem, 0.986rem + 0.07vw, 1.071rem);
+  font-weight: 700;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, opacity 0.3s ease;
@@ -115,12 +114,12 @@
 }
 
 .Navbar-menu-btn {
-  background-color: #333;
-  color: white;
+  background-color: #f2f0eb;
+  color: black;
   padding: 10px 24px;
   border-radius: 50px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: clamp(1rem, 0.986rem + 0.07vw, 1.071rem);
+  font-weight: 700;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -274,10 +273,10 @@
     height: 80px;
   }
 
-  .Navbar-container,
+  /* .Navbar-container,
   .Navbar-overlay-container {
     padding: 0 48px;
-  }
+  } */
 
   .Navbar-logo,
   .Navbar-overlay-logo {
@@ -344,5 +343,8 @@
   }
   .Navbar-menu-btn .Navbar-contact-btn {
     padding: 15px 24px;
+  }
+  .Navbar-container {
+    padding: 0 24px;
   }
 }
