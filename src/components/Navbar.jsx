@@ -240,7 +240,7 @@ const Navbar = () => {
                 isScrolled ? "Navbar-logo-hidden" : ""
               }`}
             >
-              <img src="/Diqra.png" alt="" />
+              <img src="/diqrawhite.png" alt="" />
             </Link>
 
             <div

@@ -1,7 +1,7 @@
 /* Main Navigation */
 .Navbar {
   position: fixed;
-  top: 0;
+  top: 20px;
   left: 0;
   right: 0;
   z-index: 40;
@@ -23,7 +23,7 @@
 }
 
 .Navbar-logo {
-  width: 155px;
+  width: 200px;
 }
 
 .Navbar-logo-hidden {
@@ -42,7 +42,6 @@
   transition: opacity 0.3s ease;
   opacity: 1;
   pointer-events: auto;
-  color: #fcfcfc;
 }
 
 .Navbar-links-hidden {
@@ -54,7 +53,7 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: #000;
+  color: #ffffff; /* White color for nav links */
   text-decoration: none;
   transition: opacity 0.2s ease;
   pointer-events: auto;
@@ -75,7 +74,7 @@
 .Navbar-contact-btn {
   background-color: #000;
   color: white;
-  padding: 15px 24px;
+  padding: 10px 24px;
   border-radius: 50px;
   font-size: 14px;
   font-weight: 500;
@@ -118,7 +117,7 @@
 .Navbar-menu-btn {
   background-color: #333;
   color: white;
-  padding: 15px 24px;
+  padding: 10px 24px;
   border-radius: 50px;
   font-size: 14px;
   font-weight: 500;
@@ -242,13 +241,13 @@
 }
 
 /* GSAP Animation Classes */
-.navbar-text-original,
-.navbar-text-hover {
+.text-original,
+.text-hover {
   display: block;
   will-change: transform, opacity;
 }
 
-.navbar-text-hover {
+.text-hover {
   opacity: 0;
 }
 
@@ -335,17 +334,13 @@
 }
 
 @media (max-width: 768px) {
-  .Navbar {
-    pointer-events: auto;
-    top: 27px;
-  }
-  .Navbar-logo img {
+  .Navbar-logo {
     width: 150px;
   }
   .Navbar-actions {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
   }
   .Navbar-menu-btn .Navbar-contact-btn {
     padding: 15px 24px;
