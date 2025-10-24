@@ -240,7 +240,7 @@ const Navbar = () => {
                 isScrolled ? "Navbar-logo-hidden" : ""
               }`}
             >
-              OH Architecture
+              <img src="/Diqra.png" alt="" />
             </Link>
 
             <div
