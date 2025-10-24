@@ -1,78 +1,78 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
+import { gsap } from "gsap";
 import "../styles/Navbar.css";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const overlayRef = useRef(null); // reference to overlay for sequencing
 
   useEffect(() => {
-    // Animate overlay menu open/close
+    // Opening/closing overlay clip-path animation (your existing sequence)
     const overlay = document.querySelector(".Navbar-overlay-menu");
-    const overlayContent = document.querySelector(".Navbar-overlay-content");
 
     if (isMenuOpen) {
-      // Opening animation
+      // ensure overlay is present for measurement before we animate contents
       gsap.set(overlay, { display: "block" });
       gsap.fromTo(
         overlay,
         { clipPath: "inset(0% 0% 100% 0%)" },
-        {
-          clipPath: "inset(0% 0% 0% 0%)",
-          duration: 0.6,
-          ease: "power3.inOut",
-        }
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power3.inOut" }
       );
 
-      // Stagger animate menu items
-      gsap.fromTo(
-        ".Navbar-overlay-nav-item",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          delay: 0.3,
-          ease: "power2.out",
-        }
-      );
+      // after overlay becomes visible, animate children (and ensure measurements are correct)
+      // Use requestAnimationFrame to guarantee layout updated
+      requestAnimationFrame(() => {
+        // small delay ensures computed styles / layout stable
+        requestAnimationFrame(() => {
+          gsap.fromTo(
+            ".Navbar-overlay-nav-item",
+            { y: 30, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              stagger: 0.08,
+              delay: 0.05,
+              ease: "power2.out",
+            }
+          );
 
-      // Animate footer links
-      gsap.fromTo(
-        ".Navbar-overlay-footer-link",
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.4,
-          stagger: 0.05,
-          delay: 0.5,
-          ease: "power2.out",
-        }
-      );
-    } else {
-      // Closing animation
-      gsap.to(overlay, {
-        clipPath: "inset(0% 0% 100% 0%)",
-        duration: 0.5,
-        ease: "power3.inOut",
-        onComplete: () => {
-          gsap.set(overlay, { display: "none" });
-        },
+          gsap.fromTo(
+            ".Navbar-overlay-footer-link",
+            { y: 20, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.4,
+              stagger: 0.05,
+              delay: 0.25,
+              ease: "power2.out",
+            }
+          );
+        });
       });
+    } else {
+      if (overlay) {
+        gsap.to(overlay, {
+          clipPath: "inset(0% 0% 100% 0%)",
+          duration: 0.5,
+          ease: "power3.inOut",
+          onComplete: () => {
+            gsap.set(overlay, { display: "none" });
+          },
+        });
+      }
     }
   }, [isMenuOpen]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 600);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 600);
 
-    // Throttle scroll events for better performance
+    // throttle with requestAnimationFrame
     let ticking = false;
-    const throttledScroll = () => {
+    const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           handleScroll();
@@ -82,115 +82,161 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener("scroll", throttledScroll, { passive: true });
-    return () => window.removeEventListener("scroll", throttledScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const createSlideUpEffect = (element) => {
-      let span = element.querySelector("span");
+  // createSlideUpEffect returns a paused timeline for hover
+  const createSlideUpEffect = (element) => {
+    if (!element) return null;
+    let span = element.querySelector("span");
 
-      if (!span) {
-        const originalText = element.textContent;
-        element.innerHTML = `<span>${originalText}</span>`;
-        span = element.querySelector("span");
-      }
+    if (!span) {
+      const originalText = element.textContent.trim();
+      element.innerHTML = `<span>${originalText}</span>`;
+      span = element.querySelector("span");
+    }
 
-      if (span.querySelector(".text-original")) return; // avoid duplicate init
+    if (span.querySelector(".text-original")) return null;
 
-      const originalText = span.textContent;
-      span.innerHTML = `
-        <span class="text-original">${originalText}</span>
-        <span class="text-hover">${originalText}</span>
-      `;
+    const originalText = span.textContent;
+    span.innerHTML = `
+    <span class="text-original">${originalText}</span>
+    <span class="text-hover">${originalText}</span>
+  `;
 
-      const originalSpan = span.querySelector(".text-original");
-      const hoverSpan = span.querySelector(".text-hover");
-      const slideDistance = originalSpan.offsetHeight;
+    const originalSpan = span.querySelector(".text-original");
+    const hoverSpan = span.querySelector(".text-hover");
+    const slideDistance = originalSpan.offsetHeight || 32;
 
-      gsap.set(span, {
-        overflow: "hidden",
-        position: "relative",
-        display: "block",
-        height: "auto",
-      });
-
-      gsap.set(originalSpan, { y: 0, position: "relative", display: "block" });
-      gsap.set(hoverSpan, {
-        y: `${slideDistance}px`,
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        display: "block",
-      });
-
-      const tl = gsap.timeline({ paused: true });
-
-      tl.to(originalSpan, {
-        y: `-${slideDistance}px`,
-        duration: 0.3,
-        ease: "power2.out",
-      })
-        .to(
-          hoverSpan,
-          {
-            y: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          },
-          0
-        )
-        .to(originalSpan, { opacity: 0, duration: 0.1 }, 0.15)
-        .to(hoverSpan, { opacity: 1, duration: 0.1 }, 0.15);
-
-      tl.eventCallback("onReverseComplete", () => {
-        gsap.set(originalSpan, { y: 0, opacity: 1 });
-        gsap.set(hoverSpan, { y: `${slideDistance}px`, opacity: 0 });
-      });
-
-      return tl;
-    };
-
-    // Apply to all nav animated elements
-    const animatedElements = document.querySelectorAll(
-      ".Navbar-link-animated, .Navbar-contact-btn, .Navbar-menu-btn, .Navbar-overlay-nav-item, .Navbar-overlay-footer-link"
-    );
-
-    const timelines = new Map();
-
-    animatedElements.forEach((element) => {
-      const timeline = createSlideUpEffect(element);
-      if (timeline) {
-        timelines.set(element, timeline);
-
-        const handleMouseEnter = () => {
-          timeline.play();
-        };
-
-        const handleMouseLeave = () => {
-          timeline.reverse();
-        };
-
-        element.addEventListener("mouseenter", handleMouseEnter);
-        element.addEventListener("mouseleave", handleMouseLeave);
-
-        // Store cleanup functions
-        element._cleanupHover = () => {
-          element.removeEventListener("mouseenter", handleMouseEnter);
-          element.removeEventListener("mouseleave", handleMouseLeave);
-        };
-      }
+    gsap.set(span, {
+      overflow: "hidden",
+      position: "relative",
+      display: "block",
+      height: "auto",
     });
 
-    // Cleanup on unmount
-    return () => {
-      animatedElements.forEach((element) => {
-        if (element._cleanupHover) {
-          element._cleanupHover();
-        }
+    gsap.set(originalSpan, { y: 0, position: "relative", display: "block" });
+    gsap.set(hoverSpan, {
+      y: `${slideDistance}px`,
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      display: "block",
+    });
+
+    const tl = gsap.timeline({ paused: true });
+
+    tl.to(originalSpan, {
+      y: `-${slideDistance}px`,
+      duration: 0.4,
+      ease: "power2.inOut",
+    })
+      .to(
+        hoverSpan,
+        {
+          y: 0,
+          duration: 0.4,
+          ease: "power2.inOut",
+        },
+        0
+      )
+      .to(originalSpan, { opacity: 0, duration: 0.1 }, 0.2)
+      .to(hoverSpan, { opacity: 1, duration: 0.1 }, 0.2);
+
+    tl.eventCallback("onReverseComplete", () => {
+      gsap.set(originalSpan, { y: 0, opacity: 1 });
+      gsap.set(hoverSpan, { y: `${slideDistance}px`, opacity: 0 });
+    });
+
+    return tl;
+  };
+
+  // Initialize hover timelines in two phases:
+  // 1) Immediately for always-visible elements (desktop nav & header buttons)
+  // 2) When overlay is opened (so overlay items can be measured while visible)
+  useEffect(() => {
+    const selectors = [
+      ".Navbar-link-animated",
+      ".Navbar-contact-btn",
+      ".Navbar-menu-btn",
+    ];
+
+    const attachHover = (el) => {
+      const tl = createSlideUpEffect(el);
+      if (!tl) return null;
+      const onEnter = () => tl.play();
+      const onLeave = () => tl.reverse();
+      el.addEventListener("mouseenter", onEnter);
+      el.addEventListener("mouseleave", onLeave);
+      return () => {
+        el.removeEventListener("mouseenter", onEnter);
+        el.removeEventListener("mouseleave", onLeave);
+      };
+    };
+
+    const elements = document.querySelectorAll(selectors.join(", "));
+    const cleanups = [];
+
+    // Wait for DOM layout to stabilize before measuring text height
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        elements.forEach((el) => {
+          const cleanup = attachHover(el);
+          if (cleanup) cleanups.push(cleanup);
+        });
       });
-      timelines.clear();
+    });
+
+    // Cleanup
+    return () => {
+      cleanups.forEach((fn) => fn());
+    };
+  }, []);
+
+  // When overlay opens, initialize overlay-specific hover animations AFTER overlay is visible
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    // Wait a frame so overlay is rendered/display:block and measurements are correct
+    let cancel = false;
+    requestAnimationFrame(() => {
+      if (cancel) return;
+      // small secondary frame to be extra-safe on slower devices
+      requestAnimationFrame(() => {
+        const overlayItems = document.querySelectorAll(
+          ".Navbar-overlay-nav-item, .Navbar-overlay-footer-link"
+        );
+        overlayItems.forEach((el) => {
+          // skip if already initialized
+          if (el._hoverInitialized) return;
+          const tl = createSlideUpEffect(el);
+          if (!tl) return;
+          const onEnter = () => tl.play();
+          const onLeave = () => tl.reverse();
+          el.addEventListener("mouseenter", onEnter);
+          el.addEventListener("mouseleave", onLeave);
+          el._hoverCleanup = () => {
+            el.removeEventListener("mouseenter", onEnter);
+            el.removeEventListener("mouseleave", onLeave);
+            delete el._hoverCleanup;
+            delete el._hoverInitialized;
+          };
+          el._hoverInitialized = true;
+        });
+      });
+    });
+
+    return () => {
+      cancel = true;
+      // cleanup overlay hover listeners
+      const overlayItems = document.querySelectorAll(
+        ".Navbar-overlay-nav-item, .Navbar-overlay-footer-link"
+      );
+      overlayItems.forEach((el) => {
+        if (el._hoverCleanup) el._hoverCleanup();
+      });
     };
   }, [isMenuOpen]);
 
@@ -198,21 +244,18 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Main Navigation */}
       <nav className="Navbar">
         <div className="Navbar-container">
           <div className="Navbar-content">
-            {/* Logo - Hidden when scrolled */}
             <Link
               to="/"
               className={`Navbar-logo ${
                 isScrolled ? "Navbar-logo-hidden" : ""
               }`}
             >
-              OH Architecture
+              Diqra Architects
             </Link>
 
-            {/* Desktop Nav Items - Hidden when scrolled or on mobile */}
             <div
               className={`Navbar-links ${
                 isScrolled ? "Navbar-links-hidden" : ""
@@ -229,15 +272,12 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Right Side Buttons */}
             <div className="Navbar-actions">
-              {/* Contact Button */}
               <button className="Navbar-contact-btn">
                 <span>GET IN TOUCH</span>
-                <span className="Navbar-contact-dot"></span>
+                <span className="Navbar-contact-dot" aria-hidden />
               </button>
 
-              {/* Menu Button */}
               <button
                 onClick={() => setIsMenuOpen(true)}
                 className={`Navbar-menu-btn ${
@@ -251,14 +291,13 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Full Screen Overlay Menu */}
       <div
         className={`Navbar-overlay-menu ${
           isMenuOpen ? "Navbar-overlay-menu-open" : ""
         }`}
+        ref={overlayRef}
       >
         <div className="Navbar-overlay-container">
-          {/* Overlay Header */}
           <div className="Navbar-overlay-header">
             <Link to="/" className="Navbar-overlay-logo">
               OH Architecture
@@ -271,9 +310,7 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Overlay Content */}
           <div className="Navbar-overlay-content">
-            {/* Main Menu Items */}
             <nav className="Navbar-overlay-nav">
               <Link
                 to="/"
@@ -294,7 +331,6 @@ const Navbar = () => {
               ))}
             </nav>
 
-            {/* Footer Links */}
             <div className="Navbar-overlay-footer">
               <Link to="/instagram" className="Navbar-overlay-footer-link">
                 <span>INSTAGRAM</span>
