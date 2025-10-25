@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import "../styles/Services.css";
 import { gsap } from "gsap";
 
+import { Link } from "react-router-dom";
+
 const Services = () => {
   useEffect(() => {
     // Function to create slide-up effect for button
@@ -180,9 +182,13 @@ const Services = () => {
         </div>
 
         <div className="header-right">
-          <a href="services.html" className="cta-btn-styled">
+          {/* <a href="services.html" className="cta-btn-styled">
             <span>View all</span>
-          </a>
+          </a> */}
+
+          <Link to="/services" className="cta-btn-styled">
+            <span>View All</span>
+          </Link>
         </div>
 
         <div className="inquiry">
