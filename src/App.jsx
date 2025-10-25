@@ -10,6 +10,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import Navbar from "./components/Navbar";
 import ServicesPage from "./pages/ServicesPage";
 import ServiceDetailPage from "./pages/ServicesDetailPage";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 export default function App() {
   return (
