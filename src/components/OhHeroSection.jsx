@@ -216,7 +216,6 @@ export default function OhHeroSection() {
       parallaxTween.kill();
       pinTrigger.kill();
       ScrollTrigger.getAll().forEach((t) => t.kill());
-      if (split) split.revert();
     };
   }, [heroLoaded]);
 
