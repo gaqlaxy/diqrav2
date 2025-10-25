@@ -7,6 +7,13 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const overlayRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     // Opening/closing overlay clip-path animation
@@ -65,6 +72,7 @@ const Navbar = () => {
   }, [isMenuOpen]);
 
   useEffect(() => {
+    if (isMobile) return;
     const handleScroll = () => setIsScrolled(window.scrollY > 600);
 
     let ticking = false;
@@ -80,7 +88,7 @@ const Navbar = () => {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isMobile]);
 
   const createSlideUpEffect = (element) => {
     if (!element) return null;
@@ -237,7 +245,7 @@ const Navbar = () => {
             <Link
               to="/"
               className={`Navbar-logo ${
-                isScrolled ? "Navbar-logo-hidden" : ""
+                isMobile || isScrolled ? "Navbar-logo-hidden" : ""
               }`}
             >
               <img src="/diqrawhite.png" alt="" />
@@ -245,7 +253,7 @@ const Navbar = () => {
 
             <div
               className={`Navbar-links ${
-                isScrolled ? "Navbar-links-hidden" : ""
+                isMobile || isScrolled ? "Navbar-links-hidden" : ""
               }`}
             >
               {navItems.map((item) => (
@@ -262,7 +270,7 @@ const Navbar = () => {
             <div className="Navbar-actions">
               <button
                 className={`Navbar-contact-btn ${
-                  isScrolled ? "Navbar-contact-btn-visible" : ""
+                  isMobile || isScrolled ? "Navbar-contact-btn-visible" : ""
                 }`}
               >
                 <span>GET IN TOUCH</span>
@@ -272,7 +280,7 @@ const Navbar = () => {
               <button
                 onClick={() => setIsMenuOpen(true)}
                 className={`Navbar-menu-btn ${
-                  isScrolled ? "Navbar-menu-btn-visible" : ""
+                  isMobile || isScrolled ? "Navbar-menu-btn-visible" : ""
                 }`}
               >
                 <span>MENU</span>

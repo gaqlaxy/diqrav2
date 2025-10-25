@@ -347,4 +347,7 @@
   .Navbar-container {
     padding: 0 24px;
   }
+  .Navbar {
+    top: 10px;
+  }
 }
