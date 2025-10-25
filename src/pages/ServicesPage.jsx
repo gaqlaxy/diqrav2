@@ -93,6 +93,8 @@ const ServicesPage = () => {
                   {
                     clipPath: "inset(0px 0px 100%)",
                     objectPosition: "0px 60%",
+                    // opacity: 0,
+                    // scale: 1.1,
                     duration: 1.5,
                     ease: "none",
                   },
@@ -110,26 +112,47 @@ const ServicesPage = () => {
               mainTimeline.add(sectionTimeline);
             }
           });
+          // } else {
+          //   // Mobile animations - simplified
+          //   gsap.set(imgs, {
+          //     objectPosition: "0px 60%",
+          //   });
+
+          //   imgs.forEach((image) => {
+          //     gsap
+          //       .timeline({
+          //         scrollTrigger: {
+          //           trigger: image,
+          //           start: "top-=70% top+=50%",
+          //           end: "bottom+=200% bottom",
+          //           scrub: 1,
+          //           invalidateOnRefresh: true,
+          //         },
+          //       })
+          //       .to(image, {
+          //         objectPosition: "0px 30%",
+          //         duration: 5,
+          //         ease: "none",
+          //       });
+          //   });
+          // }
         } else {
-          // Mobile animations - simplified
-          gsap.set(imgs, {
-            objectPosition: "0px 60%",
-          });
+          // ✅ Mobile animations - smoother parallax without white gaps
+          gsap.set(imgs, { yPercent: 0 });
 
           imgs.forEach((image) => {
             gsap
               .timeline({
                 scrollTrigger: {
                   trigger: image,
-                  start: "top-=70% top+=50%",
-                  end: "bottom+=200% bottom",
+                  start: "top bottom", // starts when image enters viewport
+                  end: "bottom top", // ends when it leaves
                   scrub: 1,
                   invalidateOnRefresh: true,
                 },
               })
               .to(image, {
-                objectPosition: "0px 30%",
-                duration: 5,
+                yPercent: -15, // gentle upward motion
                 ease: "none",
               });
           });

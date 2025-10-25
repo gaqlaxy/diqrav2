@@ -708,6 +708,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
         @media (max-width: 768px) {
           .servicedetail-hero {
             padding: 60px 20px 40px;
+            margin : 30px 0;
           }
 
           .servicedetail-hero-title {
