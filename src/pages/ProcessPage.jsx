@@ -357,6 +357,10 @@ export default function ProcessPage() {
     };
   }, []);
 
+  useEffect(() => {
+    scrollTo(0, 0);
+  });
+
   return (
     <div className="process-page">
       {/* Dummy Section Before */}

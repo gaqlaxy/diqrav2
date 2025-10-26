@@ -488,7 +488,8 @@ margin-bottom: 40px;}
 
         @media (max-width: 768px) {
           .contact-page-container {
-            padding: 40px 20px;
+            padding: 80px 20px;
+            margin-top: 80px;
           }
 
          
