@@ -235,7 +235,7 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
-  const navItems = ["WORKS", "STUDIO", "PROCESS", "GALLERY"];
+  const navItems = ["WORKS", "ABOUT", "PROCESS", "GALLERY"];
 
   return (
     <>
@@ -273,7 +273,11 @@ const Navbar = () => {
                   isMobile || isScrolled ? "Navbar-contact-btn-visible" : ""
                 }`}
               >
-                <span>GET IN TOUCH</span>
+                {/* <span>GET IN TOUCH</span> */}
+                <Link to="/contact">
+                  <span>GET IN TOUCH</span>
+                </Link>
+
                 <span className="Navbar-contact-dot" aria-hidden="true" />
               </button>
 
@@ -299,7 +303,7 @@ const Navbar = () => {
         <div className="Navbar-overlay-container">
           <div className="Navbar-overlay-header">
             <Link to="/" className="Navbar-overlay-logo">
-              OH Architecture
+              <img src="diqrawhite.png" alt="" />
             </Link>
             <button
               onClick={() => setIsMenuOpen(false)}

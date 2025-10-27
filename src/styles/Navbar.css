@@ -280,7 +280,7 @@
 
   .Navbar-logo,
   .Navbar-overlay-logo {
-    font-size: 24px;
+    width: 200px;
   }
 
   .Navbar-links {

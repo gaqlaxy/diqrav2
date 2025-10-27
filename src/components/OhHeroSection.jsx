@@ -286,14 +286,14 @@ export default function OhHeroSection() {
               alt={`${featuredProject.title} preview`}
               className="oh-preview-image"
             />
-            <div className="oh-preview-overlay-text">
+            {/* <div className="oh-preview-overlay-text">
               <h3 ref={previewTitleRef} className="oh-preview-title">
                 {featuredProject.title}
               </h3>
               <p ref={previewSubtitleRef} className="oh-preview-subtitle">
                 Explore the Project
               </p>
-            </div>
+            </div> */}
           </div>
 
           {/* Top Bar */}
