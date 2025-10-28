@@ -200,13 +200,14 @@
 }
 
 .Navbar-overlay-nav {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   gap: 8px;
 }
 
 .Navbar-overlay-nav-item {
-  font-size: 32px;
+  font-size: 56px;
+
   font-weight: bold;
   color: white;
   letter-spacing: -0.025em;
@@ -308,15 +309,15 @@
   }
 
   .Navbar-overlay-content {
-    padding: 40px 0;
+    /* padding: 40px 0; */
   }
 
   .Navbar-overlay-nav {
-    gap: 12px;
+    /* gap: 12px; */
   }
 
   .Navbar-overlay-nav-item {
-    font-size: 48px;
+    font-size: 56px;
   }
 
   .Navbar-overlay-footer {
@@ -349,5 +350,14 @@
   }
   .Navbar {
     top: 10px;
+  }
+  .Navbar-overlay-header {
+    height: 150px;
+  }
+  .Navbar-overlay-logo {
+    width: 200px;
+  }
+  .Navbar-overlay-nav-item {
+    font-size: clamp(2.39rem, 1.95rem + 2.2vw, 4.59rem);
   }
 }

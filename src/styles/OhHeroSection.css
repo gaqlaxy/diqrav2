@@ -381,7 +381,7 @@ body {
   width: 100%;
   max-width: 400px;
   object-fit: cover;
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 
 .about-heading2 {
@@ -650,7 +650,7 @@ body {
     height: 420px;
     width: 100%;
     max-width: none;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
   }
 
