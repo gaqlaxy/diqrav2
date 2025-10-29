@@ -225,7 +225,7 @@ export default function HorizontalGallery() {
           .gallery-container {
             height: auto !important;
             overflow: visible !important;
-            margin: 100px auto;
+            margin-top: 100px;
           }
 
           .scroll-container-mobile {

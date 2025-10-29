@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
+import CtaSection from "../components/CtaSection";
+import Footer from "../components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -221,7 +223,7 @@ const ServicesPage = () => {
 
       <div className="servicespage-header-section">
         <div className="servicespage-label">
-          <span>WHAT WE DO</span>
+          <span>(WHAT WE DO)</span>
         </div>
         <h1 className="servicespage-main-title">Our Services</h1>
       </div>
@@ -458,22 +460,18 @@ const ServicesPage = () => {
         </div>
       </div>
 
-      <div className="servicespage-spacer"></div>
+      {/* <div className="servicespage-spacer"></div> */}
+      <CtaSection />
+      <Footer />
 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;800&display=swap');
         
-        body {
-          color: #121212;
-          font-family: 'Outfit', sans-serif;
-          background-color: #f9ffe7;
-          margin: 0;
-          padding: 0;
-        }
+        
         
         .servicespage-container {
-          max-width: 1440px;
-          padding: 2rem;
+          max-width: 1600px;
+          
           margin: 0 auto;
         }
         
@@ -487,7 +485,7 @@ const ServicesPage = () => {
           flex-direction: column;
           gap: 8px;
           margin-bottom: 60px;
-          max-width: 1100px;
+          max-width: 1400px;
           margin-inline: auto;
         }
 
@@ -495,20 +493,17 @@ const ServicesPage = () => {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 12px;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          color: #666;
+          font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  
+  z-index: 101;
+  font-weight: 400;
+  color: #333;
         }
 
-        .servicespage-label::before {
-          content: "";
-          width: 8px;
-          height: 8px;
-          background-color: #000;
-          flex-shrink: 0;
-        }
+        
 
         .servicespage-main-title {
           font-size: 120px;
@@ -533,7 +528,7 @@ const ServicesPage = () => {
         }
         
         .servicespage-arch__info {
-          max-width: 356px;
+          max-width: 385px;
           height: 100vh;
           display: grid;
           place-items: center;
@@ -550,7 +545,7 @@ const ServicesPage = () => {
           display: flex;
           align-items: center;
           justify-content: flex-start;
-          margin-bottom: 20px;
+          
         }
 
         .servicespage-icon {
@@ -559,9 +554,9 @@ const ServicesPage = () => {
         }
         
         .servicespage-header {
-          font-family: Outfit;
-          font-size: 32px;
-          font-weight: 500;
+          
+          font-size: 52px;
+          font-weight: 400;
           letter-spacing: -0.64px;
           margin: 0 0 12px 0;
         }
