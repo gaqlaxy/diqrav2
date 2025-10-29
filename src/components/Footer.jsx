@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/Footer.css";
+import "../styles/SlideUpLink.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -16,16 +18,44 @@ export default function Footer() {
             <h3>What We Do</h3>
             <ul>
               <li>
-                <a href="#">Exterior Design</a>
+                {/* <a href="#"></a> */}
+                <Link
+                  to="/services"
+                  className="slideup-link"
+                  data-text="Exterior Design"
+                >
+                  <span>Exterior Design</span>
+                </Link>
               </li>
               <li>
-                <a href="#">Design & Planning</a>
+                {/* <a href="#">Design & Planning</a> */}
+                <Link
+                  to="/services"
+                  className="slideup-link"
+                  data-text="Design & Planning"
+                >
+                  <span>Design & Planning</span>
+                </Link>
               </li>
               <li>
-                <a href="#">Consultation</a>
+                {/* <a href="#">Consultation</a> */}
+                <Link
+                  to="/services"
+                  className="slideup-link"
+                  data-text="Consultation"
+                >
+                  <span>Consultation</span>
+                </Link>
               </li>
               <li>
-                <a href="#">Landscape Design</a>
+                {/* <a href="#">Landscape Design</a> */}
+                <Link
+                  to="/services"
+                  className="slideup-link"
+                  data-text="Landscape Design"
+                >
+                  <span>Landscape Design</span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -34,22 +64,43 @@ export default function Footer() {
             <h3>Pages</h3>
             <ul>
               <li>
-                <a href="#">About us</a>
+                {/* <a href="#">About us</a> */}
+                <Link to="/about" className="slideup-link" data-text="About us">
+                  <span>About us</span>
+                </Link>
               </li>
               <li>
-                <a href="#">Projects</a>
+                {/* <a href="#">Projects</a> */}
+                <Link to="/works" className="slideup-link" data-text="Projects">
+                  <span>Projects</span>
+                </Link>
               </li>
               <li>
-                <a href="#">Services</a>
+                {/* <a href="#">Services</a> */}
+                <Link
+                  to="/services"
+                  className="slideup-link"
+                  data-text="Services"
+                >
+                  <span>Services</span>
+                </Link>
+              </li>
+
+              <li>
+                {/* <a href="#">FAQ</a> */}
+                <Link to="/contact" className="slideup-link" data-text="FAQ">
+                  <span>FAQ</span>
+                </Link>
               </li>
               <li>
-                <a href="#">Blogs</a>
-              </li>
-              <li>
-                <a href="#">FAQ</a>
-              </li>
-              <li>
-                <a href="#">Contact us</a>
+                {/* <a href="#">Contact us</a> */}
+                <Link
+                  to="/contact"
+                  className="slideup-link"
+                  data-text="Contact us"
+                >
+                  <span>Contact us</span>
+                </Link>
               </li>
             </ul>
           </div>
@@ -58,13 +109,34 @@ export default function Footer() {
             <h3>Resources</h3>
             <ul>
               <li>
-                <a href="#">Privacy Policy</a>
+                {/* <a href="#">Privacy Policy</a> */}
+                <Link
+                  to="/privacy"
+                  className="slideup-link"
+                  data-text="Privacy Policy"
+                >
+                  <span>Privacy Policy</span>
+                </Link>
               </li>
               <li>
-                <a href="#">Terms & Conditions</a>
+                {/* <a href="#">Terms & Conditions</a> */}
+                <Link
+                  to="/terms"
+                  className="slideup-link"
+                  data-text="Terms & Conditions"
+                >
+                  <span>Terms & Conditions</span>
+                </Link>
               </li>
               <li>
-                <a href="#">License</a>
+                {/* <a href="#">License</a> */}
+                <Link
+                  to="/license"
+                  className="slideup-link"
+                  data-text="License"
+                >
+                  <span>License</span>
+                </Link>
               </li>
             </ul>
           </div>

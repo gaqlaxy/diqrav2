@@ -623,15 +623,15 @@ const Navbar = () => {
               </Link>
 
               <div className="Navbar-actions">
-                {/* <button className="Navbar-contact-btn Navbar-contact-btn-visible">
+                <button className="Navbar-contact-btn Navbar-contact-btn-visible">
                   <Link to="/contact">
                     <span>GET IN TOUCH</span>
                   </Link>
                   <span className="Navbar-contact-dot" aria-hidden="true" />
-                </button> */}
-                <SlideUpButton to="/contact" className="ml-4">
+                </button>
+                {/* <SlideUpButton to="/contact" className="ml-4">
                   Get in touch
-                </SlideUpButton>
+                </SlideUpButton> */}
 
                 <button
                   onClick={() => setIsMenuOpen(true)}
@@ -740,7 +740,7 @@ const Navbar = () => {
             </div>
 
             <div className="Navbar-actions">
-              {/* <button
+              <button
                 className={`Navbar-contact-btn ${
                   isMobile || isScrolled ? "Navbar-contact-btn-visible" : ""
                 }`}
@@ -749,17 +749,15 @@ const Navbar = () => {
                   <span>GET IN TOUCH</span>
                 </Link>
                 <span className="Navbar-contact-dot" aria-hidden="true" />
-              </button> */}
-              <SlideUpButton to="/contact" className="ctagetintouch">
+              </button>
+              {/* <SlideUpButton to="/contact" className="ctagetintouch">
                 Get in touch
-              </SlideUpButton>
+              </SlideUpButton> */}
 
               <button
                 onClick={() => setIsMenuOpen(true)}
                 className={`Navbar-menu-btn ${
-                  isMobile || isScrolled
-                    ? "Navbar-menu-btn-visible ctamenu"
-                    : ""
+                  isMobile || isScrolled ? "Navbar-menu-btn-visible" : ""
                 }`}
               >
                 <span>MENU</span>

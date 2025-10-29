@@ -152,7 +152,9 @@ export default function ContactPage() {
         "Getting started is easy! Fill out our contact form, give us a call, or book an appointment through our website. We'll schedule an initial consultation to discuss your vision, requirements, and next steps.",
     },
   ];
-
+  useEffect(() => {
+    scrollTo(0, 0);
+  });
   return (
     <>
       <style>{`
