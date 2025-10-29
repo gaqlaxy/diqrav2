@@ -361,3 +361,12 @@
     font-size: clamp(2.39rem, 1.95rem + 2.2vw, 4.59rem);
   }
 }
+
+.Navbar-simple {
+  pointer-events: auto;
+}
+
+.Navbar-simple .Navbar-logo {
+  opacity: 1;
+  pointer-events: auto;
+}
