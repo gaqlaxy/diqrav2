@@ -258,6 +258,7 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
 import "../styles/CtaSection.css"; // ✅ Import external stylesheet
+import SlideUpButton from "./SlideUpButton";
 
 export default function CTASection() {
   useEffect(() => {
@@ -342,9 +343,10 @@ export default function CTASection() {
         </div>
       </div>
       <div className="cta-btn-section">
-        <a href="#" className="cta-btn-styled">
+        {/* <a href="#" className="cta-btn-styled">
           <span>tell us about your project</span>
-        </a>
+        </a> */}
+        <SlideUpButton to="/contact">tell us about your project</SlideUpButton>
       </div>
     </section>
   );

@@ -358,6 +358,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import "../styles/Navbar.css";
+import SlideUpButton from "../components/SlideUpButton";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -622,12 +623,15 @@ const Navbar = () => {
               </Link>
 
               <div className="Navbar-actions">
-                <button className="Navbar-contact-btn Navbar-contact-btn-visible">
+                {/* <button className="Navbar-contact-btn Navbar-contact-btn-visible">
                   <Link to="/contact">
                     <span>GET IN TOUCH</span>
                   </Link>
                   <span className="Navbar-contact-dot" aria-hidden="true" />
-                </button>
+                </button> */}
+                <SlideUpButton to="/contact" className="ml-4">
+                  Get in touch
+                </SlideUpButton>
 
                 <button
                   onClick={() => setIsMenuOpen(true)}
@@ -635,6 +639,12 @@ const Navbar = () => {
                 >
                   <span>MENU</span>
                 </button>
+                {/* <SlideUpButton
+                  onClick={() => setIsMenuOpen(true)}
+                  className={`Navbar-menu-btn ${
+                    isScrolled ? "Navbar-menu-btn--hidden" : ""
+                  }`}
+                /> */}
               </div>
             </div>
           </div>
@@ -730,7 +740,7 @@ const Navbar = () => {
             </div>
 
             <div className="Navbar-actions">
-              <button
+              {/* <button
                 className={`Navbar-contact-btn ${
                   isMobile || isScrolled ? "Navbar-contact-btn-visible" : ""
                 }`}
@@ -739,16 +749,27 @@ const Navbar = () => {
                   <span>GET IN TOUCH</span>
                 </Link>
                 <span className="Navbar-contact-dot" aria-hidden="true" />
-              </button>
+              </button> */}
+              <SlideUpButton to="/contact" className="ctagetintouch">
+                Get in touch
+              </SlideUpButton>
 
               <button
                 onClick={() => setIsMenuOpen(true)}
                 className={`Navbar-menu-btn ${
-                  isMobile || isScrolled ? "Navbar-menu-btn-visible" : ""
+                  isMobile || isScrolled
+                    ? "Navbar-menu-btn-visible ctamenu"
+                    : ""
                 }`}
               >
                 <span>MENU</span>
               </button>
+              {/* <SlideUpButton
+                onClick={() => setIsMenuOpen(true)}
+                className={`Navbar-menu-btn ${
+                  isScrolled ? "Navbar-menu-btn--hidden" : ""
+                }`}
+              /> */}
             </div>
           </div>
         </div>

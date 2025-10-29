@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "../styles/Services.css";
 import { gsap } from "gsap";
+import SlideUpButton from "../components/SlideUpButton";
 
 import { Link } from "react-router-dom";
 
@@ -186,9 +187,12 @@ const Services = () => {
             <span>View all</span>
           </a> */}
 
-          <Link to="/services" className="cta-btn-styled">
+          {/* <Link to="/services" className="cta-btn-styled">
             <span>View All</span>
-          </Link>
+          </Link> */}
+          <SlideUpButton to="/services" className="ml-4">
+            view all
+          </SlideUpButton>
         </div>
 
         <div className="inquiry">

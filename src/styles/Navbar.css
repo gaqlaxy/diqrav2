@@ -267,6 +267,11 @@
 .Navbar-overlay-footer-link:hover {
   will-change: transform, opacity;
 }
+.ctagetintouch {
+  position: absolute;
+  top: -1.5rem;
+  right: 7rem;
+}
 
 /* Tablet and Desktop */
 @media (min-width: 1024px) {
@@ -360,6 +365,16 @@
   .Navbar-overlay-nav-item {
     font-size: clamp(2.39rem, 1.95rem + 2.2vw, 4.59rem);
   }
+  .ctagetintouch {
+    position: absolute;
+    top: 0;
+    right: 7rem;
+  }
+  .ctamenu {
+    position: absolute;
+    top: 2.3rem;
+    right: 0;
+  }
 }
 
 .Navbar-simple {
@@ -369,4 +384,10 @@
 .Navbar-simple .Navbar-logo {
   opacity: 1;
   pointer-events: auto;
+}
+
+.Navbar-menu-btn--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }

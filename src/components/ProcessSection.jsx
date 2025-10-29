@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "../styles/ProcessSection.css";
 import { gsap } from "gsap";
+import SlideUpButton from "../components/SlideUpButton";
 
 const ProcessSection = () => {
   useEffect(() => {
@@ -111,9 +112,12 @@ const ProcessSection = () => {
             inspired, and involved.
           </p>
 
-          <a href="#" className="process-cta-btn-styled">
+          {/* <a href="#" className="process-cta-btn-styled">
             <span>get to know our process</span>
-          </a>
+          </a> */}
+          <SlideUpButton to="/contact" className="ml-4">
+            get to know our process
+          </SlideUpButton>
         </div>
       </div>
     </div>

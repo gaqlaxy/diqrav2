@@ -160,6 +160,7 @@ import gsap from "gsap";
 import { Link } from "react-router-dom";
 import projectsData from "../data/projects-data.json";
 import "../styles/FeaturedWorks.css";
+import SlideUpButton from "../components/SlideUpButton";
 
 const FeaturedWorks = () => {
   useEffect(() => {
@@ -277,9 +278,12 @@ const FeaturedWorks = () => {
       </div>
 
       <div className="cta-btn-container">
-        <Link to="/works" className="cta-btn-styled">
+        {/* <Link to="/works" className="cta-btn-styled">
           <span>View all works</span>
-        </Link>
+        </Link> */}
+        <SlideUpButton to="/works" className="ml-4">
+          view all works
+        </SlideUpButton>
       </div>
     </section>
   );

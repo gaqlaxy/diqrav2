@@ -6,6 +6,7 @@ import { SplitText } from "gsap/SplitText";
 import { Link } from "react-router-dom";
 import projectsData from "../data/projects-data.json";
 import "../styles/OhHeroSection.css";
+import SlideUpButton from "../components/SlideUpButton";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -401,7 +402,7 @@ export default function OhHeroSection() {
               move through your space.
             </p>
 
-            <Link
+            {/* <Link
               to="/about"
               className="about-cta-btn-styled"
               ref={ctaBtnRef}
@@ -409,7 +410,10 @@ export default function OhHeroSection() {
               onMouseLeave={handleCtaMouseLeave}
             >
               <span>Learn more About us</span>
-            </Link>
+            </Link> */}
+            <SlideUpButton to="/about" className="ml-4">
+              learn more about us
+            </SlideUpButton>
           </div>
         </section>
       </main>
