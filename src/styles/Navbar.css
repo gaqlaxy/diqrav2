@@ -220,7 +220,9 @@
 
 .Navbar-overlay-nav {
   flex-direction: column;
+  display: flex;
   gap: 8px;
+  width: fit-content; /* Fix hover area to content width only */
 }
 
 .Navbar-overlay-nav-item {
@@ -230,7 +232,8 @@
   letter-spacing: -0.025em;
   text-decoration: none;
   transition: opacity 0.2s ease;
-  display: block;
+  display: inline-block; /* Change from block to inline-block */
+  width: fit-content; /* Ensure width fits content */
 }
 
 .Navbar-overlay-nav-item:hover {
@@ -242,6 +245,7 @@
   flex-direction: column;
   gap: 16px;
   color: white;
+  width: fit-content; /* Fix hover area for footer links */
 }
 
 .Navbar-overlay-footer-link {
@@ -251,6 +255,7 @@
   color: white;
   text-decoration: none;
   transition: opacity 0.2s ease;
+  width: fit-content; /* Ensure width fits content */
 }
 
 .Navbar-overlay-footer-link:hover {
@@ -345,7 +350,8 @@
 
 @media (max-width: 768px) {
   .Navbar-logo {
-    width: 150px;
+    /* width: 150px; */
+    display: none;
   }
   .Navbar-actions {
     position: absolute;

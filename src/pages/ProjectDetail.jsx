@@ -170,6 +170,7 @@ const ProjectDetail = () => {
 
         .hero-content {
           margin-bottom: 3rem;
+          margin-top: 3rem;
         }
 
         .back-link {
