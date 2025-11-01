@@ -52,7 +52,7 @@
   font-size: clamp(1rem, 0.986rem + 0.07vw, 1.071rem);
   font-weight: 600;
   letter-spacing: 0.05em;
-  color: #ffffff; /* White color for nav links */
+  color: #ffffff; /* White color for nav links on homepage */
   text-decoration: none;
   transition: opacity 0.2s ease;
   pointer-events: auto;
@@ -60,6 +60,25 @@
 
 .Navbar-link:hover {
   opacity: 0.6;
+}
+
+/* Dark theme for non-homepage pages */
+.Navbar-dark .Navbar-link {
+  color: #000000; /* Black color for other pages */
+}
+
+.Navbar-dark .Navbar-contact-btn {
+  background-color: #000000;
+  color: white;
+}
+
+.Navbar-dark .Navbar-menu-btn {
+  background-color: #000000;
+  color: white;
+}
+
+.Navbar-dark .Navbar-contact-dot {
+  background-color: white;
 }
 
 /* Right Side Actions */
@@ -200,14 +219,12 @@
 }
 
 .Navbar-overlay-nav {
-  /* display: flex; */
   flex-direction: column;
   gap: 8px;
 }
 
 .Navbar-overlay-nav-item {
   font-size: 56px;
-
   font-weight: bold;
   color: white;
   letter-spacing: -0.025em;
@@ -267,6 +284,7 @@
 .Navbar-overlay-footer-link:hover {
   will-change: transform, opacity;
 }
+
 .ctagetintouch {
   position: absolute;
   top: -1.5rem;
@@ -278,11 +296,6 @@
   .Navbar-content {
     height: 80px;
   }
-
-  /* .Navbar-container,
-  .Navbar-overlay-container {
-    padding: 0 48px;
-  } */
 
   .Navbar-logo,
   .Navbar-overlay-logo {
@@ -311,14 +324,6 @@
 
   .Navbar-overlay-header {
     height: 80px;
-  }
-
-  .Navbar-overlay-content {
-    /* padding: 40px 0; */
-  }
-
-  .Navbar-overlay-nav {
-    /* gap: 12px; */
   }
 
   .Navbar-overlay-nav-item {
@@ -377,6 +382,7 @@
   }
 }
 
+/* Simple navbar styles for non-homepage */
 .Navbar-simple {
   pointer-events: auto;
 }

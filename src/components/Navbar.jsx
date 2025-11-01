@@ -1,13 +1,18 @@
 // import React, { useState, useEffect, useRef } from "react";
-// import { Link } from "react-router-dom";
+// import { Link, useLocation } from "react-router-dom";
 // import { gsap } from "gsap";
 // import "../styles/Navbar.css";
+// import SlideUpButton from "../components/SlideUpButton";
 
 // const Navbar = () => {
 //   const [isScrolled, setIsScrolled] = useState(false);
 //   const [isMenuOpen, setIsMenuOpen] = useState(false);
 //   const overlayRef = useRef(null);
 //   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+//   const location = useLocation();
+
+//   // Check if we're on homepage
+//   const isHomePage = location.pathname === "/";
 
 //   useEffect(() => {
 //     const handleResize = () => setIsMobile(window.innerWidth < 1024);
@@ -72,8 +77,8 @@
 //   }, [isMenuOpen]);
 
 //   useEffect(() => {
-//     if (isMobile) return;
-//     const handleScroll = () => setIsScrolled(window.scrollY > 600);
+//     if (isMobile || !isHomePage) return;
+//     const handleScroll = () => setIsScrolled(window.scrollY > 200);
 
 //     let ticking = false;
 //     const onScroll = () => {
@@ -88,7 +93,7 @@
 
 //     window.addEventListener("scroll", onScroll, { passive: true });
 //     return () => window.removeEventListener("scroll", onScroll);
-//   }, [isMobile]);
+//   }, [isMobile, isHomePage]);
 
 //   const createSlideUpEffect = (element) => {
 //     if (!element) return null;
@@ -100,13 +105,22 @@
 //       span = element.querySelector("span");
 //     }
 
-//     if (span.querySelector(".navbar-text-original")) return null;
-
-//     const originalText = span.textContent;
-//     span.innerHTML = `
-//     <span class="navbar-text-original">${originalText}</span>
-//     <span class="navbar-text-hover">${originalText}</span>
-//   `;
+//     // If already initialized, get the original text and reset
+//     if (span.querySelector(".navbar-text-original")) {
+//       const originalText = span.querySelector(
+//         ".navbar-text-original"
+//       ).textContent;
+//       span.innerHTML = `
+//         <span class="navbar-text-original">${originalText}</span>
+//         <span class="navbar-text-hover">${originalText}</span>
+//       `;
+//     } else {
+//       const originalText = span.textContent;
+//       span.innerHTML = `
+//         <span class="navbar-text-original">${originalText}</span>
+//         <span class="navbar-text-hover">${originalText}</span>
+//       `;
+//     }
 
 //     const originalSpan = span.querySelector(".navbar-text-original");
 //     const hoverSpan = span.querySelector(".navbar-text-hover");
@@ -192,7 +206,7 @@
 //     return () => {
 //       cleanups.forEach((fn) => fn());
 //     };
-//   }, []);
+//   }, [isHomePage]); // Added isHomePage as dependency
 
 //   // Initialize hover for overlay items when menu opens
 //   useEffect(() => {
@@ -206,7 +220,11 @@
 //           ".Navbar-overlay-nav-item, .Navbar-overlay-footer-link, .Navbar-close-btn"
 //         );
 //         overlayItems.forEach((el) => {
-//           if (el._hoverInitialized) return;
+//           // Clean up any existing hover before reinitializing
+//           if (el._hoverCleanup) {
+//             el._hoverCleanup();
+//           }
+
 //           const tl = createSlideUpEffect(el);
 //           if (!tl) return;
 //           const onEnter = () => tl.play();
@@ -237,6 +255,104 @@
 
 //   const navItems = ["WORKS", "ABOUT", "PROCESS", "GALLERY"];
 
+//   // If not on homepage, show logo + buttons
+//   if (!isHomePage) {
+//     return (
+//       <>
+//         <nav className="Navbar Navbar-simple">
+//           <div className="Navbar-container">
+//             <div className="Navbar-content">
+//               <Link to="/" className="Navbar-logo">
+//                 <img src="/diqrawhite.png" alt="" />
+//               </Link>
+
+//               <div className="Navbar-actions">
+//                 <button className="Navbar-contact-btn Navbar-contact-btn-visible">
+//                   <Link to="/contact">
+//                     <span>GET IN TOUCH</span>
+//                   </Link>
+//                   <span className="Navbar-contact-dot" aria-hidden="true" />
+//                 </button>
+//                 {/* <SlideUpButton to="/contact" className="ml-4">
+//                   Get in touch
+//                 </SlideUpButton> */}
+
+//                 <button
+//                   onClick={() => setIsMenuOpen(true)}
+//                   className="Navbar-menu-btn Navbar-menu-btn-visible"
+//                 >
+//                   <span>MENU</span>
+//                 </button>
+//                 {/* <SlideUpButton
+//                   onClick={() => setIsMenuOpen(true)}
+//                   className={`Navbar-menu-btn ${
+//                     isScrolled ? "Navbar-menu-btn--hidden" : ""
+//                   }`}
+//                 /> */}
+//               </div>
+//             </div>
+//           </div>
+//         </nav>
+
+//         <div
+//           className={`Navbar-overlay-menu ${
+//             isMenuOpen ? "Navbar-overlay-menu-open" : ""
+//           }`}
+//           ref={overlayRef}
+//         >
+//           <div className="Navbar-overlay-container">
+//             <div className="Navbar-overlay-header">
+//               <Link to="/" className="Navbar-overlay-logo">
+//                 <img src="diqrawhite.png" alt="" />
+//               </Link>
+//               <button
+//                 onClick={() => setIsMenuOpen(false)}
+//                 className="Navbar-close-btn"
+//               >
+//                 <span>CLOSE</span>
+//               </button>
+//             </div>
+
+//             <div className="Navbar-overlay-content">
+//               <nav className="Navbar-overlay-nav">
+//                 <Link
+//                   to="/"
+//                   onClick={() => setIsMenuOpen(false)}
+//                   className="Navbar-overlay-nav-item"
+//                 >
+//                   <span>HOME</span>
+//                 </Link>
+//                 {navItems.map((item) => (
+//                   <Link
+//                     key={item}
+//                     to={`/${item.toLowerCase()}`}
+//                     onClick={() => setIsMenuOpen(false)}
+//                     className="Navbar-overlay-nav-item"
+//                   >
+//                     <span>{item}</span>
+//                   </Link>
+//                 ))}
+//               </nav>
+
+//               <div className="Navbar-overlay-footer">
+//                 <Link to="/instagram" className="Navbar-overlay-footer-link">
+//                   <span>INSTAGRAM</span>
+//                 </Link>
+//                 <Link to="/privacy" className="Navbar-overlay-footer-link">
+//                   <span>PRIVACY POLICY</span>
+//                 </Link>
+//                 <Link to="/terms" className="Navbar-overlay-footer-link">
+//                   <span>TERMS OF SERVICE</span>
+//                 </Link>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </>
+//     );
+//   }
+
+//   // Homepage full navbar
 //   return (
 //     <>
 //       <nav className="Navbar">
@@ -273,13 +389,14 @@
 //                   isMobile || isScrolled ? "Navbar-contact-btn-visible" : ""
 //                 }`}
 //               >
-//                 {/* <span>GET IN TOUCH</span> */}
 //                 <Link to="/contact">
 //                   <span>GET IN TOUCH</span>
 //                 </Link>
-
 //                 <span className="Navbar-contact-dot" aria-hidden="true" />
 //               </button>
+//               {/* <SlideUpButton to="/contact" className="ctagetintouch">
+//                 Get in touch
+//               </SlideUpButton> */}
 
 //               <button
 //                 onClick={() => setIsMenuOpen(true)}
@@ -289,6 +406,12 @@
 //               >
 //                 <span>MENU</span>
 //               </button>
+//               {/* <SlideUpButton
+//                 onClick={() => setIsMenuOpen(true)}
+//                 className={`Navbar-menu-btn ${
+//                   isScrolled ? "Navbar-menu-btn--hidden" : ""
+//                 }`}
+//               /> */}
 //             </div>
 //           </div>
 //         </div>
@@ -562,7 +685,7 @@ const Navbar = () => {
     return () => {
       cleanups.forEach((fn) => fn());
     };
-  }, [isHomePage]); // Added isHomePage as dependency
+  }, [isHomePage]);
 
   // Initialize hover for overlay items when menu opens
   useEffect(() => {
@@ -609,17 +732,15 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
-  const navItems = ["WORKS", "ABOUT", "PROCESS", "GALLERY"];
-
-  // If not on homepage, show logo + buttons
+  // If not on homepage, show logo + buttons (BLACK THEME)
   if (!isHomePage) {
     return (
       <>
-        <nav className="Navbar Navbar-simple">
+        <nav className="Navbar Navbar-simple Navbar-dark">
           <div className="Navbar-container">
             <div className="Navbar-content">
               <Link to="/" className="Navbar-logo">
-                <img src="/diqrawhite.png" alt="" />
+                <img src="/diqrablack.png" alt="" />
               </Link>
 
               <div className="Navbar-actions">
@@ -629,9 +750,6 @@ const Navbar = () => {
                   </Link>
                   <span className="Navbar-contact-dot" aria-hidden="true" />
                 </button>
-                {/* <SlideUpButton to="/contact" className="ml-4">
-                  Get in touch
-                </SlideUpButton> */}
 
                 <button
                   onClick={() => setIsMenuOpen(true)}
@@ -639,12 +757,6 @@ const Navbar = () => {
                 >
                   <span>MENU</span>
                 </button>
-                {/* <SlideUpButton
-                  onClick={() => setIsMenuOpen(true)}
-                  className={`Navbar-menu-btn ${
-                    isScrolled ? "Navbar-menu-btn--hidden" : ""
-                  }`}
-                /> */}
               </div>
             </div>
           </div>
@@ -678,16 +790,34 @@ const Navbar = () => {
                 >
                   <span>HOME</span>
                 </Link>
-                {navItems.map((item) => (
-                  <Link
-                    key={item}
-                    to={`/${item.toLowerCase()}`}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="Navbar-overlay-nav-item"
-                  >
-                    <span>{item}</span>
-                  </Link>
-                ))}
+                <Link
+                  to="/works"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="Navbar-overlay-nav-item"
+                >
+                  <span>WORKS</span>
+                </Link>
+                <Link
+                  to="/about"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="Navbar-overlay-nav-item"
+                >
+                  <span>ABOUT</span>
+                </Link>
+                <Link
+                  to="/process"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="Navbar-overlay-nav-item"
+                >
+                  <span>PROCESS</span>
+                </Link>
+                <Link
+                  to="/gallery"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="Navbar-overlay-nav-item"
+                >
+                  <span>GALLERY</span>
+                </Link>
               </nav>
 
               <div className="Navbar-overlay-footer">
@@ -708,7 +838,7 @@ const Navbar = () => {
     );
   }
 
-  // Homepage full navbar
+  // Homepage full navbar (WHITE THEME)
   return (
     <>
       <nav className="Navbar">
@@ -728,15 +858,18 @@ const Navbar = () => {
                 isMobile || isScrolled ? "Navbar-links-hidden" : ""
               }`}
             >
-              {navItems.map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase()}`}
-                  className="Navbar-link Navbar-link-animated"
-                >
-                  <span>{item}</span>
-                </Link>
-              ))}
+              <Link to="/works" className="Navbar-link Navbar-link-animated">
+                <span>WORKS</span>
+              </Link>
+              <Link to="/about" className="Navbar-link Navbar-link-animated">
+                <span>ABOUT</span>
+              </Link>
+              <Link to="/process" className="Navbar-link Navbar-link-animated">
+                <span>PROCESS</span>
+              </Link>
+              <Link to="/gallery" className="Navbar-link Navbar-link-animated">
+                <span>GALLERY</span>
+              </Link>
             </div>
 
             <div className="Navbar-actions">
@@ -750,9 +883,6 @@ const Navbar = () => {
                 </Link>
                 <span className="Navbar-contact-dot" aria-hidden="true" />
               </button>
-              {/* <SlideUpButton to="/contact" className="ctagetintouch">
-                Get in touch
-              </SlideUpButton> */}
 
               <button
                 onClick={() => setIsMenuOpen(true)}
@@ -762,12 +892,6 @@ const Navbar = () => {
               >
                 <span>MENU</span>
               </button>
-              {/* <SlideUpButton
-                onClick={() => setIsMenuOpen(true)}
-                className={`Navbar-menu-btn ${
-                  isScrolled ? "Navbar-menu-btn--hidden" : ""
-                }`}
-              /> */}
             </div>
           </div>
         </div>
@@ -801,16 +925,34 @@ const Navbar = () => {
               >
                 <span>HOME</span>
               </Link>
-              {navItems.map((item) => (
-                <Link
-                  key={item}
-                  to={`/${item.toLowerCase()}`}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="Navbar-overlay-nav-item"
-                >
-                  <span>{item}</span>
-                </Link>
-              ))}
+              <Link
+                to="/works"
+                onClick={() => setIsMenuOpen(false)}
+                className="Navbar-overlay-nav-item"
+              >
+                <span>WORKS</span>
+              </Link>
+              <Link
+                to="/about"
+                onClick={() => setIsMenuOpen(false)}
+                className="Navbar-overlay-nav-item"
+              >
+                <span>ABOUT</span>
+              </Link>
+              <Link
+                to="/process"
+                onClick={() => setIsMenuOpen(false)}
+                className="Navbar-overlay-nav-item"
+              >
+                <span>PROCESS</span>
+              </Link>
+              <Link
+                to="/gallery"
+                onClick={() => setIsMenuOpen(false)}
+                className="Navbar-overlay-nav-item"
+              >
+                <span>GALLERY</span>
+              </Link>
             </nav>
 
             <div className="Navbar-overlay-footer">
@@ -832,16 +974,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-/* Add this to your Navbar.css file:
-
-.Navbar-simple {
-  pointer-events: auto;
-}
-
-.Navbar-simple .Navbar-logo {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-*/
