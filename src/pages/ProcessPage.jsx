@@ -410,8 +410,8 @@ export default function ProcessPage() {
         <div style={styles.heroImageBackground}>
           <img
             ref={heroImageRef}
-            src="https://images.unsplash.com/photo-1626471671222-9d89fe4c2668?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Modern Architecture"
+            src="https://images.unsplash.com/photo-1489514354504-1653aa90e34e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=871"
+            alt="Construction Process"
             style={styles.heroImage}
           />
           <div style={styles.heroOverlay}></div>
@@ -533,13 +533,15 @@ const styles = {
     zIndex: 2,
   },
   heroContent: {
-    color: "white",
+    color: "black",
     maxWidth: "700px",
   },
   heroSubtitle: {
     fontSize: "clamp(0.875rem, 1.5vw, 1.125rem)",
     letterSpacing: "0.1em",
     textTransform: "uppercase",
+    // fontWeight: 700,
+    fontWeight: "500",
     opacity: 0.7,
     marginBottom: "2rem",
   },
