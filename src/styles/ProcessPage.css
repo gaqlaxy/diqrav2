@@ -1,19 +1,15 @@
 .process-page {
-  background: #111;
-  height: 100vh;
+  background: #fff;
+  min-height: 100vh;
 }
 
 .process-page-content-wrapper {
   perspective: 800px;
-  height: 100vh;
 }
 
 .process-page-content-slide {
   color: #111;
   padding: 3rem 1rem 6rem 1rem;
-  height: 100vh; /* ADD THIS - makes cards full viewport height on all screens */
-  display: flex; /* ADD THIS - needed for centering content */
-  align-items: center;
 }
 
 .process-page-content-slide-inner {
@@ -68,27 +64,12 @@
 
 @media (min-width: 900px) {
   .process-page-content-slide {
-    /* height: calc(100vh - 80px); */
-    transform-style: preserve-3d;
-  }
-
-  .process-page-content-slide-inner {
-    gap: 4rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .process-page-content-slide {
     height: calc(100vh - 80px);
     transform-style: preserve-3d;
   }
 
   .process-page-content-slide-inner {
     gap: 4rem;
-  }
-  .process-page-content-slide {
-    color: #111;
-    padding: 3rem 1rem 6rem 1rem;
   }
 }
 
