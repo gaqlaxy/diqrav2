@@ -2429,6 +2429,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLocation } from "react-router-dom";
 import CtaSection from "../components/CtaSection";
 import Footer from "../components/Footer";
+import SlideUpButton from "../components/SlideUpButton";
 
 import { Link } from "react-router-dom";
 
@@ -2923,10 +2924,11 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
             ))}
           </div>
           <div className="servicedetail-projects-cta">
-            <Link to="/works" className="servicedetail-view-all-btn">
+            {/* <Link to="/works" className="servicedetail-view-all-btn">
               <span>View All Projects</span>
               <span className="arrow">→</span>
-            </Link>
+            </Link> */}
+            <SlideUpButton to="/works">View all works</SlideUpButton>
           </div>
         </section>
       )}
@@ -2952,8 +2954,8 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
         .servicedetail-container {
-          font-family: 'Outfit', sans-serif;
-          color: #121212;
+          
+          color: #000;
           background-color: #fff;
         }
 

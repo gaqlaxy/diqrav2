@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
 import CtaSection from "../components/CtaSection";
 import Footer from "../components/Footer";
+import SlideUpButton from "../components/SlideUpButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -264,12 +265,15 @@ const ServicesPage = () => {
                 Elevate the curb appeal and functionality of your property with
                 our exterior design services.
               </p>
-              <Link
+              {/* <Link
                 to="/services/exterior-design"
                 className="servicespage-cta-btn-styled"
               >
                 <span>Learn More</span>
-              </Link>
+              </Link> */}
+              <SlideUpButton to="/services/exterior-design">
+                Learn More
+              </SlideUpButton>
             </div>
           </div>
 
@@ -296,12 +300,15 @@ const ServicesPage = () => {
                 We'll transform your ideas into a cohesive plan that sets the
                 stage for a seamless and successful execution.
               </p>
-              <Link
+              {/* <Link
                 to="/services/design-planning"
                 className="servicespage-cta-btn-styled"
               >
                 <span>Learn More</span>
-              </Link>
+              </Link> */}
+              <SlideUpButton to="/services/design-planning">
+                Learn More
+              </SlideUpButton>
             </div>
           </div>
 
@@ -338,12 +345,15 @@ const ServicesPage = () => {
                 Our consultation services offer personalized guidance &
                 expertise to help you navigate the complexities.
               </p>
-              <Link
+              {/* <Link
                 to="/services/consultation"
                 className="servicespage-cta-btn-styled"
               >
                 <span>Learn More</span>
-              </Link>
+              </Link> */}
+              <SlideUpButton to="/services/consultaion">
+                Learn More
+              </SlideUpButton>
             </div>
           </div>
 
@@ -374,12 +384,15 @@ const ServicesPage = () => {
                 Create stunning interiors that reflect your style and enhance
                 functionality with our expert design solutions.
               </p>
-              <Link
+              {/* <Link
                 to="/services/interior-design"
                 className="servicespage-cta-btn-styled"
               >
                 <span>Learn More</span>
-              </Link>
+              </Link> */}
+              <SlideUpButton to="/services/interior-design">
+                Learn More
+              </SlideUpButton>
             </div>
           </div>
 
@@ -407,12 +420,15 @@ const ServicesPage = () => {
                 Transform your existing space with our renovation services that
                 breathe new life into outdated structures.
               </p>
-              <Link
+              {/* <Link
                 to="/services/renovation"
                 className="servicespage-cta-btn-styled"
               >
                 <span>Learn More</span>
-              </Link>
+              </Link> */}
+              <SlideUpButton to="/services/renovation">
+                Learn More
+              </SlideUpButton>
             </div>
           </div>
         </div>
