@@ -154,7 +154,7 @@ export default function ContactPage() {
   ];
   useEffect(() => {
     scrollTo(0, 0);
-  });
+  }, []);
   return (
     <>
       <style>{`
