@@ -306,7 +306,6 @@ const ProjectDetail = () => {
           padding: 6rem 5rem;
           max-width: 1600px;
           margin: 0 auto;
-          background: #f9f9f9;
         }
 
         .nav-project {
