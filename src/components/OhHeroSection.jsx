@@ -221,32 +221,32 @@ export default function OhHeroSection() {
   }, [heroLoaded]);
 
   // CTA hover handlers
-  const handleCtaMouseEnter = () => {
-    const span = ctaBtnRef.current?.querySelector("span");
-    if (span) {
-      const originalSpan = span.querySelector(".text-original");
-      const hoverSpan = span.querySelector(".text-hover");
-      if (originalSpan && hoverSpan) {
-        gsap.to(originalSpan, {
-          y: "-100%",
-          duration: 0.3,
-          ease: "power2.out",
-        });
-        gsap.to(hoverSpan, { y: 0, duration: 0.3, ease: "power2.out" });
-      }
-    }
-  };
-  const handleCtaMouseLeave = () => {
-    const span = ctaBtnRef.current?.querySelector("span");
-    if (span) {
-      const originalSpan = span.querySelector(".text-original");
-      const hoverSpan = span.querySelector(".text-hover");
-      if (originalSpan && hoverSpan) {
-        gsap.to(originalSpan, { y: 0, duration: 0.3, ease: "power2.out" });
-        gsap.to(hoverSpan, { y: "100%", duration: 0.3, ease: "power2.out" });
-      }
-    }
-  };
+  // const handleCtaMouseEnter = () => {
+  //   const span = ctaBtnRef.current?.querySelector("span");
+  //   if (span) {
+  //     const originalSpan = span.querySelector(".text-original");
+  //     const hoverSpan = span.querySelector(".text-hover");
+  //     if (originalSpan && hoverSpan) {
+  //       gsap.to(originalSpan, {
+  //         y: "-100%",
+  //         duration: 0.3,
+  //         ease: "power2.out",
+  //       });
+  //       gsap.to(hoverSpan, { y: 0, duration: 0.3, ease: "power2.out" });
+  //     }
+  //   }
+  // };
+  // const handleCtaMouseLeave = () => {
+  //   const span = ctaBtnRef.current?.querySelector("span");
+  //   if (span) {
+  //     const originalSpan = span.querySelector(".text-original");
+  //     const hoverSpan = span.querySelector(".text-hover");
+  //     if (originalSpan && hoverSpan) {
+  //       gsap.to(originalSpan, { y: 0, duration: 0.3, ease: "power2.out" });
+  //       gsap.to(hoverSpan, { y: "100%", duration: 0.3, ease: "power2.out" });
+  //     }
+  //   }
+  // };
 
   const handleMouseEnter = () => timelineRef.current?.play();
   const handleMouseLeave = () => timelineRef.current?.reverse();
@@ -347,8 +347,8 @@ export default function OhHeroSection() {
           {/* Bottom Hero Text */}
           <div className="oh-hero-content">
             <h1 ref={heroH1Ref} className="oh-hero-h1">
-              The OH Architecture style is defined by strong, solid forms with
-              subtle elegance, natural balance and enduring appeal
+              Strong, Grounded Forms Shaped by Culture, Balance, and Enduring
+              Elegance
             </h1>
           </div>
 
@@ -379,10 +379,7 @@ export default function OhHeroSection() {
                   <span>(our studio)</span>
                 </div>
                 <div className="about-img-col">
-                  <img
-                    src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=869&auto=format&fit=crop"
-                    alt="Architecture Studio"
-                  />
+                  <img src="/About.jpg" alt="Architecture Studio" />
                 </div>
                 <div className="about-heading2">
                   <h1>INTENT + IMPACT</h1>
