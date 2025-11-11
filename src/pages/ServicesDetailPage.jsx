@@ -2514,7 +2514,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
       subtitle: "TRANSFORM YOUR PROPERTY",
       hero: "https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/cu8978xjlsjjpjk52ta0.webp",
       description:
-        "Elevate the curb appeal and functionality of your property with our exterior design services. We create stunning facades that blend aesthetics with durability.",
+        "We craft bold, refined exteriors that balance form, function, and lasting visual harmony. Every façade is designed to elevate the character of your space while staying true to its surroundings.",
       features: [
         {
           title: "Facade Design",
@@ -2566,7 +2566,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
       subtitle: "FROM VISION TO REALITY",
       hero: "https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/trh7c8ufv1dqfrofdytd.webp",
       description:
-        "We'll transform your ideas into a cohesive plan that sets the stage for a seamless and successful execution. Our comprehensive approach ensures every detail is considered.",
+        "From conceptual layouts to detailed drawings, we shape your project with precision and clarity. Our planning process ensures functional flow, aesthetic coherence, and long-term usability.",
       features: [
         {
           title: "Space Planning",
@@ -2618,7 +2618,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
       subtitle: "EXPERT GUIDANCE",
       hero: "https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/aw6qwur0pggp5r03whjq.webp",
       description:
-        "Our consultation services offer personalized guidance & expertise to help you navigate the complexities of architectural and design decisions.",
+        "We offer expert guidance to help you make confident design decisions. From material choices to spatial strategies, our consultations provide clear direction tailored to your goals.",
       features: [
         {
           title: "Project Assessment",
@@ -2670,7 +2670,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
       subtitle: "SPACES THAT INSPIRE",
       hero: "https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/sqwn8u84zd1besgl0zpd.webp",
       description:
-        "Create stunning interiors that reflect your style and enhance functionality with our expert design solutions. Every space tells a unique story.",
+        "We create interiors that feel balanced, elegant, and deeply connected to your lifestyle. Through thoughtful materials, textures, and spatial experiences, we shape spaces that feel harmonious and timeless.",
       features: [
         {
           title: "Custom Furniture",
@@ -2722,7 +2722,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
       subtitle: "REFRESH & REVITALIZE",
       hero: "https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/cu8978xjlsjjpjk52ta0.webp",
       description:
-        "Transform your existing space with our renovation services that breathe new life into outdated structures. Seamless upgrades with minimal disruption.",
+        "We reimagine existing spaces with a blend of sensitivity and innovation. Our renovation approach preserves what matters while elevating form, function, and overall design quality.",
       features: [
         {
           title: "Structural Updates",

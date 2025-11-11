@@ -389,14 +389,12 @@ export default function OhHeroSection() {
           </div>
           <div className="about-architecture-content">
             <p>
-              The DIQRA Architecture style is defined by strong, solid forms
-              with subtle elegance, natural balance and enduring appeal.
-            </p>
-            <p>
-              We design spaces for people. No matter the scale of the projects,
-              our down-to-earth approach stays the same. We listen first, design
-              second. We take the time to understand how you live, work, and
-              move through your space.
+              Diqra Architects creates spaces that balance strength, serenity,
+              and refined craftsmanship. Our work draws from cultural richness
+              and translates it into contemporary, timeless architecture. Every
+              project is approached with clarity, precision, and a commitment to
+              natural harmony, resulting in spaces that feel grounded, enduring,
+              and beautifully purposeful.
             </p>
 
             {/* <Link

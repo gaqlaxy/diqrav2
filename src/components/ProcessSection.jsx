@@ -102,14 +102,15 @@ const ProcessSection = () => {
       <div className="process-right-column">
         <div className="process-content-section">
           <p className="process-main-heading">
-            Our approach at Diqra Architects is designed to make your journey
-            from concept to completion as smooth and enjoyable as possible.
+            A Clear and Collaborative Process, Crafted Around You
           </p>
 
           <p className="process-description">
-            With our 6-stage process, we prioritise clarity, collaboration, and
-            your unique vision. At every step, we'll keep you informed,
-            inspired, and involved.
+            Our 6-stage approach ensures a smooth journey from the first
+            conversation to the final build. With structured steps, transparent
+            communication, and a focus on your vision, we guide each phase with
+            clarity and precision—so you always know what’s happening and what
+            comes next.
           </p>
 
           {/* <a href="#" className="process-cta-btn-styled">

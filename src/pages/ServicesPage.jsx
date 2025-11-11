@@ -262,8 +262,8 @@ const ServicesPage = () => {
               </div>
               <h2 className="servicespage-header">Exterior Design</h2>
               <p className="servicespage-desc">
-                Elevate the curb appeal and functionality of your property with
-                our exterior design services.
+                We craft bold, refined exteriors that balance form, function,
+                and lasting visual harmony.
               </p>
               {/* <Link
                 to="/services/exterior-design"
@@ -297,8 +297,8 @@ const ServicesPage = () => {
               </div>
               <h2 className="servicespage-header">Design & Planning</h2>
               <p className="servicespage-desc">
-                We'll transform your ideas into a cohesive plan that sets the
-                stage for a seamless and successful execution.
+                From conceptual layouts to detailed drawings, we shape your
+                project with precision and clarity.
               </p>
               {/* <Link
                 to="/services/design-planning"
@@ -342,8 +342,8 @@ const ServicesPage = () => {
               </div>
               <h2 className="servicespage-header">Consultation</h2>
               <p className="servicespage-desc">
-                Our consultation services offer personalized guidance &
-                expertise to help you navigate the complexities.
+                We offer expert guidance to help you make confident design
+                decisions.
               </p>
               {/* <Link
                 to="/services/consultation"
@@ -381,8 +381,8 @@ const ServicesPage = () => {
               </div>
               <h2 className="servicespage-header">Interior Design</h2>
               <p className="servicespage-desc">
-                Create stunning interiors that reflect your style and enhance
-                functionality with our expert design solutions.
+                We create interiors that feel balanced, elegant, and deeply
+                connected to your lifestyle.
               </p>
               {/* <Link
                 to="/services/interior-design"
@@ -417,8 +417,8 @@ const ServicesPage = () => {
               </div>
               <h2 className="servicespage-header">Renovation</h2>
               <p className="servicespage-desc">
-                Transform your existing space with our renovation services that
-                breathe new life into outdated structures.
+                We reimagine existing spaces with a blend of sensitivity and
+                innovation.
               </p>
               {/* <Link
                 to="/services/renovation"

@@ -119,8 +119,8 @@ const Services = () => {
             <div className="service-content">
               <h3>Exterior Design</h3>
               <p>
-                Elevate the curb appeal and functionality of your property with
-                our exterior design services.
+                We craft bold, refined exteriors that balance form, function,
+                and lasting visual harmony.
               </p>
             </div>
           </div>
@@ -142,8 +142,8 @@ const Services = () => {
             <div className="service-content">
               <h3>Design & Planning</h3>
               <p>
-                We'll transform your ideas into a cohesive plan that sets the
-                stage for a seamless and successful execution.
+                From conceptual layouts to detailed drawings, we shape your
+                project with precision and clarity.
               </p>
             </div>
           </div>
@@ -175,8 +175,8 @@ const Services = () => {
             <div className="service-content">
               <h3>Consultation</h3>
               <p>
-                Our consultation services offer personalized guidance &
-                expertise to help you navigate the complexities.
+                We offer expert guidance to help you make confident design
+                decisions.
               </p>
             </div>
           </div>
