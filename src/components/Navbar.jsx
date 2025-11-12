@@ -1118,7 +1118,9 @@ const Navbar = () => {
 
     gsap.set(originalSpan, { y: 0, position: "relative", display: "block" });
     gsap.set(hoverSpan, {
-      y: `${slideDistance}px`,
+      // y: `${slideDistance}px`,
+      y: "100%",
+
       position: "absolute",
       top: 0,
       left: 0,
@@ -1147,7 +1149,8 @@ const Navbar = () => {
 
     tl.eventCallback("onReverseComplete", () => {
       gsap.set(originalSpan, { y: 0, opacity: 1 });
-      gsap.set(hoverSpan, { y: `${slideDistance}px`, opacity: 0 });
+      gsap.set(hoverSpan, { y: "100%", opacity: 0 });
+      // gsap.set(hoverSpan, { y: `${slideDistance}px`, opacity: 0 });
     });
 
     return tl;

@@ -68,31 +68,6 @@ export default function OhHeroSection() {
       ease: "power1.out",
     });
 
-    // Text split and animation
-    // let revert = true;
-    // let split = new SplitText(heroH1Ref.current, {
-    //   type: "lines,chars",
-    //   linesClass: "lineParent",
-    //   charsClass: "lineChild",
-    //   position: "relative",
-    // });
-
-    // gsap.fromTo(
-    //   split.chars,
-    //   {
-    //     yPercent: 100,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     duration: 0.1,
-    //     stagger: 0.05,
-    //     yPercent: 0,
-    //     opacity: 1,
-    //     ease: "power4.out",
-    //     onComplete: () => revert && split.revert(),
-    //   }
-    // );
-
     // Parallax background effect
     const parallaxTween = gsap.to(heroBgRef.current, {
       yPercent: 10,
