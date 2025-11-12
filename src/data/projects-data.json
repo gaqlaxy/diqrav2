@@ -7,7 +7,7 @@
       "year": "2024",
       "category": "Residential",
       "location": "Sydney, Australia",
-      "thumbnail": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
+      "thumbnail": "/Project2.jpg",
       "featured": false,
       "description": "A contemporary residential project that blends modern architecture with natural surroundings.",
       "details": {
@@ -17,7 +17,7 @@
         "architect": "Your Studio Name"
       },
       "images": [
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop",
+        "/Project2.jpg",
         "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop",
         "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop"
       ],

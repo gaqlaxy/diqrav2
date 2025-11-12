@@ -203,7 +203,7 @@ const ProjectDetail = () => {
 
         .hero-image {
           width: 100%;
-          height: 70vh;
+
           overflow: hidden;
         }
 
