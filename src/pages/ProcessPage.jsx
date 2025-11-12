@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
-import "../styles/ProcessPage.css";
+// import "../styles/ProcessPage.css";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -39,16 +39,193 @@ const cardData = [
     copy: "We oversee the construction phase, ensuring quality and compliance, and guide you through to a smooth handover of your completed project.",
     color: "green", // You can use: green, white, orange, lilac, or add a new color in your CSS
   },
-  
 ];
+
+const styles = `
+  .process-page {
+    background: #fff;
+    min-height: 100vh;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 100%;
+    height: 140%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    will-change: transform;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    max-width: 1200px;
+    will-change: transform, opacity;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: 300;
+    opacity: 0.95;
+    letter-spacing: 0.05em;
+  }
+
+  /* Process Cards */
+  .process-page-content-wrapper {
+    perspective: 800px;
+  }
+
+  .process-page-content-slide {
+    color: #111;
+    padding: 3rem 1rem 6rem 1rem;
+  }
+
+  .process-page-content-slide-inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 2rem;
+  }
+
+  .process-page-content-slide.process-page-green {
+    background: #c9f6b4;
+  }
+
+  .process-page-content-slide.process-page-white {
+    background: #f5f5f5;
+  }
+
+  .process-page-content-slide.process-page-orange {
+    background: #ffd9b0;
+  }
+
+  .process-page-content-slide.process-page-lilac {
+    background: #c4bafe;
+  }
+
+  .process-page-content-title {
+    color: #111;
+    margin-top: 0.5rem;
+  }
+
+  .process-page-content-copy {
+    max-width: 50ch;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    line-height: 1.6;
+  }
+
+  .process-page-content-number {
+    font-size: clamp(1rem, 3vw, 3rem);
+    opacity: 0.5;
+    font-weight: 500;
+  }
+
+  .process-page-heading-lg {
+    font-size: 8vw;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  @media (min-width: 900px) {
+    .process-page-content-slide {
+      height: calc(100vh - 80px);
+      transform-style: preserve-3d;
+    }
+
+    .process-page-content-slide-inner {
+      gap: 4rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .process-page-heading-lg {
+      font-size: clamp(4rem, 8vw, 8rem);
+    }
+  }
+
+  .process-page-spacer {
+    height: 100vh;
+  }
+`;
 
 export default function ProcessPage() {
   const wrapperRefs = useRef([]);
   const slideRefs = useRef([]);
+  const heroBackgroundRef = useRef(null);
+  const heroContentRef = useRef(null);
 
   useEffect(() => {
     const mm = gsap.matchMedia();
 
+    // Parallax effect for hero section
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      if (heroBackgroundRef.current) {
+        gsap.to(heroBackgroundRef.current, {
+          yPercent: 50,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero-section",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+      }
+
+      if (heroContentRef.current) {
+        gsap.to(heroContentRef.current, {
+          opacity: 0,
+          y: 100,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".hero-section",
+            start: "top top",
+            end: "center top",
+            scrub: 1,
+          },
+        });
+      }
+    });
+
+    // Card stacking animation
     mm.add(
       "(min-width: 1200px) and (prefers-reduced-motion: no-preference)",
       () => {
@@ -92,6 +269,52 @@ export default function ProcessPage() {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
+  // useEffect(() => {
+  //   const mm = gsap.matchMedia();
+
+  //   mm.add(
+  //     "(min-width: 1200px) and (prefers-reduced-motion: no-preference)",
+  //     () => {
+  //       wrapperRefs.current.forEach((wrapper, i) => {
+  //         if (!wrapper || !slideRefs.current[i]) return;
+
+  //         const card = slideRefs.current[i];
+  //         let scale = 1;
+  //         let rotationZ = 0;
+  //         let rotationX = 0;
+
+  //         if (i !== slideRefs.current.length - 1) {
+  //           scale = 0.4 + 0.025 * i;
+  //           rotationZ = 5;
+  //           rotationX = 40;
+  //         }
+
+  //         gsap.to(card, {
+  //           scale,
+  //           rotationX,
+  //           rotationZ,
+  //           transformOrigin: "50% center",
+  //           ease: "none",
+  //           scrollTrigger: {
+  //             trigger: wrapper,
+  //             start: "top top",
+  //             end: "bottom bottom",
+  //             endTrigger: slideRefs.current[slideRefs.current.length - 1],
+  //             scrub: 1,
+  //             pin: wrapper,
+  //             pinSpacing: false,
+  //             id: i + 1,
+  //           },
+  //         });
+  //       });
+  //     }
+  //   );
+
+  //   return () => {
+  //     mm.revert();
+  //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  //   };
+  // }, []);
   // useEffect(() => {
   //   const prefersReducedMotion = window.matchMedia(
   //     "(prefers-reduced-motion: reduce)"
@@ -145,9 +368,11 @@ export default function ProcessPage() {
   });
 
   return (
-    <div className="process-page">
-      {/* Dummy Section Before */}
-      <section className="process-page-dummy-section process-page-before">
+    <>
+      <style>{styles}</style>
+      <div className="process-page">
+        {/* Dummy Section Before */}
+        {/* <section className="process-page-dummy-section process-page-before">
         <div className="process-page-dummy-content">
           <h1>Welcome Section</h1>
           <p>
@@ -156,53 +381,59 @@ export default function ProcessPage() {
           </p>
           <p>Add your hero content, intro text, or any other elements here.</p>
         </div>
-      </section>
+      </section> */}
+        <section className="hero-section">
+          <div
+            className="hero-background"
+            ref={heroBackgroundRef}
+            style={{
+              backgroundImage:
+                "url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=80)",
+            }}
+          />
+          <div className="hero-overlay" />
+          <div className="hero-content" ref={heroContentRef}>
+            <h1 className="hero-title">
+              Overview of our <br /> 5 step process
+            </h1>
+            <p className="hero-subtitle">Your vision, our expertise</p>
+          </div>
+        </section>
 
-      <section className="process-page-content">
-        <div className="process-page-content-inner">
-          {cardData.map((card, index) => (
-            <div
-              key={index}
-              className="process-page-content-wrapper"
-              ref={(el) => (wrapperRefs.current[index] = el)}
-            >
+        <section className="process-page-content">
+          <div className="process-page-content-inner">
+            {cardData.map((card, index) => (
               <div
-                className={`process-page-content-slide process-page-${card.color}`}
-                ref={(el) => (slideRefs.current[index] = el)}
+                key={index}
+                className="process-page-content-wrapper"
+                ref={(el) => (wrapperRefs.current[index] = el)}
               >
-                <div className="process-page-content-slide-inner">
-                  <div>
-                    <p className="process-page-content-number">
-                      {"{ " + card.number + " }"}
-                    </p>
-                    <h2 className="process-page-content-title process-page-heading-lg">
-                      {card.title}
-                    </h2>
-                  </div>
-                  <div>
-                    <p className="process-page-content-copy">{card.copy}</p>
+                <div
+                  className={`process-page-content-slide process-page-${card.color}`}
+                  ref={(el) => (slideRefs.current[index] = el)}
+                >
+                  <div className="process-page-content-slide-inner">
+                    <div>
+                      <p className="process-page-content-number">
+                        {"{ " + card.number + " }"}
+                      </p>
+                      <h2 className="process-page-content-title process-page-heading-lg">
+                        {card.title}
+                      </h2>
+                    </div>
+                    <div>
+                      <p className="process-page-content-copy">{card.copy}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-      <div className="process-page-spacer"></div>
-      <Testimonials />
-      <Footer />
-
-      {/* Dummy Section After */}
-      {/* <section className="process-page-dummy-section process-page-after">
-        <div className="process-page-dummy-content">
-          <h1>Closing Section</h1>
-          <p>
-            This is a dummy section after the scroll cards. Perfect for CTAs,
-            contact forms, or footer content.
-          </p>
-          <p>Customize this area to fit your needs.</p>
-        </div>
-      </section> */}
-    </div>
+            ))}
+          </div>
+        </section>
+        <div className="process-page-spacer"></div>
+        <Testimonials />
+        <Footer />
+      </div>
+    </>
   );
 }
