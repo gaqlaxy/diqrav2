@@ -80,63 +80,58 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
-  const [showContent, setShowContent] = useState(false);
 
   const handlePreloaderComplete = () => {
-    // Allow a smooth fade delay after GSAP completes
     setLoading(false);
-    setTimeout(() => setShowContent(true), 300); // small fade buffer
   };
 
-  // Optional: fallback timeout if preloader stalls
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (loading) handlePreloaderComplete();
-    }, 8000);
-    return () => clearTimeout(timer);
-  }, [loading]);
-
   return (
-    <>
+    <Router>
+      {/* Preloader overlay */}
       {loading && <Preloader onComplete={handlePreloaderComplete} />}
 
-      {showContent && (
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/works" element={<HorizontalGallery />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/process" element={<ProcessPage />} />
-            <Route path="/gallery" element={<InfiniteGallery />} />
-            <Route path="/services" element={<ServicesPage />} />
+      {/* Main app renders underneath the preloader */}
+      <div
+        style={{
+          opacity: loading ? 0.4 : 1,
+          pointerEvents: loading ? "none" : "auto",
+          transition: "opacity 0.6s ease",
+        }}
+      >
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/works" element={<HorizontalGallery />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/process" element={<ProcessPage />} />
+          <Route path="/gallery" element={<InfiniteGallery />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route
+            path="/services/exterior-design"
+            element={<ServiceDetailPage service="exterior" />}
+          />
+          <Route
+            path="/services/design-planning"
+            element={<ServiceDetailPage service="planning" />}
+          />
+          <Route
+            path="/services/consultation"
+            element={<ServiceDetailPage service="consultation" />}
+          />
+          <Route
+            path="/services/interior-design"
+            element={<ServiceDetailPage service="interior" />}
+          />
+          <Route
+            path="/services/renovation"
+            element={<ServiceDetailPage service="renovation" />}
+          />
+          <Route path="/project/:slug" element={<ProjectDetail />} />
+        </Routes>
+      </div>
 
-            <Route
-              path="/services/exterior-design"
-              element={<ServiceDetailPage service="exterior" />}
-            />
-            <Route
-              path="/services/design-planning"
-              element={<ServiceDetailPage service="planning" />}
-            />
-            <Route
-              path="/services/consultation"
-              element={<ServiceDetailPage service="consultation" />}
-            />
-            <Route
-              path="/services/interior-design"
-              element={<ServiceDetailPage service="interior" />}
-            />
-            <Route
-              path="/services/renovation"
-              element={<ServiceDetailPage service="renovation" />}
-            />
-            <Route path="/project/:slug" element={<ProjectDetail />} />
-          </Routes>
-          <SpeedInsights />
-        </Router>
-      )}
-    </>
+      <SpeedInsights />
+    </Router>
   );
 }
