@@ -77,6 +77,7 @@ import ServicesPage from "./pages/ServicesPage";
 import ServiceDetailPage from "./pages/ServicesDetailPage";
 import Preloader from "./components/Preloader";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import InteriorWorks from "./pages/InteriorWorks";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -103,6 +104,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/works" element={<HorizontalGallery />} />
+          <Route path="/interiorworks" element={<InteriorWorks />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/gallery" element={<InfiniteGallery />} />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Services from "../components/Services";
 import Footer from "../components/Footer";
+import CtaSection from "../components/CtaSection";
 import "../styles/AboutPage.css";
 
 export default function About() {
@@ -67,10 +68,7 @@ export default function About() {
         <div className="about-page-section">
           <div className="about-page-section-content">
             <p>
-              At DIQRA, we take a collaborative approach. Whether we're working
-              in the studio or alongside our clients and partners, it's this
-              shared process that helps us create work that reflects both your
-              vision and ours.
+              At DIQRA, we believe in collaboration—within our studio, with our clients, and with every partner involved. This shared process allows us to create architecture that blends your vision with our craft.
             </p>
           </div>
         </div>
@@ -91,11 +89,7 @@ export default function About() {
               alt="Interior design space"
             />
             <p className="about-page-second-section-content">
-              We believe that architecture is a reflection of the people who
-              inhabit it. Our goal is to create spaces that are not only
-              beautiful but also functional and meaningful. We listen to your
-              needs, understand your vision, and work with you to bring it to
-              life.
+              We see architecture as an expression of the people who live and interact within a space. Our focus is to design environments that are beautiful, functional, and deeply meaningful. By understanding your needs and aspirations, we work closely with you to transform ideas into enduring spaces.
             </p>
           </div>
         </div>
@@ -170,6 +164,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <CtaSection />
 
       <Footer />
     </main>

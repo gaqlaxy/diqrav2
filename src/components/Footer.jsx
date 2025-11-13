@@ -157,9 +157,9 @@ export default function Footer() {
               Office
             </div>
             <div className="contact-info">
-              4517 Washington Ave.
+              No. 534/2, 19th Street, Periyar nagar, Urapakkam
               <br />
-              Manchester, Kentucky 39495
+              Karanaipuducheri, Tamil Nadu 603202
             </div>
           </div>
 
@@ -176,7 +176,8 @@ export default function Footer() {
               Email
             </div>
             <div className="contact-info">
-              <a href="mailto:info@example.io">info@example.io</a>
+              <a href="mailto:info@example.io">info@diqraarchitecture.com</a>
+              
             </div>
           </div>
 
@@ -193,7 +194,7 @@ export default function Footer() {
               Phone
             </div>
             <div className="contact-info">
-              <a href="tel:+13785550108">+(378) 555-0108</a>
+              <a href="tel:+917871772428">+917871772428</a>
             </div>
           </div>
 
