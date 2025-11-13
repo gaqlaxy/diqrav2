@@ -2512,7 +2512,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
     exterior: {
       title: "Exterior Design",
       subtitle: "TRANSFORM YOUR PROPERTY",
-      hero: "https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/cu8978xjlsjjpjk52ta0.webp",
+      hero: "https://images.unsplash.com/photo-1712806377231-256e4a1f0a8e?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description:
         "We craft bold, refined exteriors that balance form, function, and lasting visual harmony. Every façade is designed to elevate the character of your space while staying true to its surroundings.",
       features: [
@@ -2564,7 +2564,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
     planning: {
       title: "Design & Planning",
       subtitle: "FROM VISION TO REALITY",
-      hero: "https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/trh7c8ufv1dqfrofdytd.webp",
+      hero: "https://images.unsplash.com/photo-1721244654394-36a7bc2da288?q=80&w=1017&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description:
         "From conceptual layouts to detailed drawings, we shape your project with precision and clarity. Our planning process ensures functional flow, aesthetic coherence, and long-term usability.",
       features: [
@@ -2616,7 +2616,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
     consultation: {
       title: "Consultation",
       subtitle: "EXPERT GUIDANCE",
-      hero: "https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/aw6qwur0pggp5r03whjq.webp",
+      hero: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description:
         "We offer expert guidance to help you make confident design decisions. From material choices to spatial strategies, our consultations provide clear direction tailored to your goals.",
       features: [
@@ -2668,7 +2668,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
     interior: {
       title: "Interior Design",
       subtitle: "SPACES THAT INSPIRE",
-      hero: "https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/sqwn8u84zd1besgl0zpd.webp",
+      hero: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2058&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description:
         "We create interiors that feel balanced, elegant, and deeply connected to your lifestyle. Through thoughtful materials, textures, and spatial experiences, we shape spaces that feel harmonious and timeless.",
       features: [
@@ -2720,7 +2720,7 @@ const ServiceDetailPage = ({ service = "exterior" }) => {
     renovation: {
       title: "Renovation",
       subtitle: "REFRESH & REVITALIZE",
-      hero: "https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/cu8978xjlsjjpjk52ta0.webp",
+      hero: "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       description:
         "We reimagine existing spaces with a blend of sensitivity and innovation. Our renovation approach preserves what matters while elevating form, function, and overall design quality.",
       features: [
